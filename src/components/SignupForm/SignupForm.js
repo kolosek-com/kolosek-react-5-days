@@ -13,16 +13,13 @@ class SignupForm extends Component {
       password: '',
       tos: false
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({...this.state, [event.target.name]: event.target.value});
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value});
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     console.log('Email: ', this.state.email);
     console.log('First name: ', this.state.first_name);
     console.log('Last Name: ', this.state.last_name);
