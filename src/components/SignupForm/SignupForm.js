@@ -19,6 +19,10 @@ class SignupForm extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  handleCheckboxChange = (event) => {
+    this.setState({[event.target.name]: event.target.checked});
+  }
+
   handleSubmit = (event) => {
     console.log('Email: ', this.state.email);
     console.log('First name: ', this.state.first_name);
@@ -35,7 +39,7 @@ class SignupForm extends Component {
         <TextInput label="First Name" name="first_name" value={this.state.first_name} onChange={this.handleChange}/>
         <TextInput label="Last Name" name="last_name" value={this.state.last_name} onChange={this.handleChange}/>
         <PasswordInput label="Password" name="password" value={this.state.password} onChange={this.handleChange}/>
-        <CheckboxInput label="I accept the Terms Of Service" name="tos" checked={this.state.tos} onChange={this.handleChange}/>
+        <CheckboxInput label="I accept the Terms Of Service" name="tos" checked={this.state.tos} onChange={this.handleCheckboxChange}/>
 
         <input type="submit" value="Submit" />
       </form>
