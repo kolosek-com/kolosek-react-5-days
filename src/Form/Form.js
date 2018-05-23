@@ -11,33 +11,20 @@ class Form extends Component {
       first: '',
       last: '',
       password: '',
-      checked: true
+      checked: false
     }
   }
 
-  handleEmailChange = (event) => {
-    this.setState({email: event.target.value});
-  }
-
-  handleFirstChange = (event) => {
-    this.setState({first: event.target.value});
-  }
-
-  handleLastChange = (event) => {
-    this.setState({last: event.target.value});
-  }
-
-  handlePassChange = (event) => {
-    this.setState({password: event.target.value});
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value});
   }
 
   handleCheckChange = (event) => {
-    if (this.state.checked) {
-        this.setState({checked: !event.target.checked})
-        return (
-          checked: checked
-        )
-    }
+    this.setState((previousState, currentProps) => {
+      return {
+        checked: !previousState.checked
+      }
+    })
   }
 
   formSubmitHandler = (event) => {
@@ -51,22 +38,27 @@ class Form extends Component {
             onSubmit={this.formSubmitHandler}>
 
           <Input placeholder='email'
+                 name='email'
                  value={this.state.email}
-                 onChangeValue={this.handleEmailChange} />
+                 onChangeValue={this.handleChange} />
 
           <Input placeholder='first name'
+                 name='first'
                  value={this.state.first}
-                 onChangeValue={this.handleFirstChange} />
+                 onChangeValue={this.handleChange} />
 
           <Input placeholder='last name'
+                 name='last'
                  value={this.state.last}
-                 onChangeValue={this.handleLastChange}  />
+                 onChangeValue={this.handleChange}  />
 
           <Input placeholder='password'
+                 name='password'
                  value={this.state.password}
-                 onChangeValue={this.handlePassChange}  />
+                 onChangeValue={this.handleChange}  />
 
-          <Checkbox onChangeValue={this.handleCheckChange}/>
+          <Checkbox checked={this.state.checked}
+                    onChangeValue={this.handleCheckChange}/>
 
         
         <input type="submit" 

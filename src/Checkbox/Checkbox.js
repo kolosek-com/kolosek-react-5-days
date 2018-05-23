@@ -7,7 +7,8 @@ const Checkbox = (props) => {
         <h6>I agree with terms and conditions</h6>
         <input className="form-input"
                type="checkbox"
-               onChange={props.handleCheckChange} />
+               checked={props.checked}
+               onChange={props.onChangeValue} />
       </div>
     )
 } 
