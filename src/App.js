@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import LoopRendering from './components/LoopRendering/LoopRendering';
+import DocumentEditor from './containers/DocumentEditor';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <LoopRendering />
+        <DocumentEditor />
       </div>
     );
   }

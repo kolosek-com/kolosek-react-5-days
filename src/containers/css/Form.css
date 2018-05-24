@@ -1,0 +1,17 @@
+.document_editor-form {
+  padding: 20px;
+}
+
+.editor_form-content {
+  display: flex;
+  flex-direction: column;
+  width: 950px;
+}
+
+.form-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}

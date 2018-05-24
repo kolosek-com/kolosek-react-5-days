@@ -1,0 +1,19 @@
+.left_panel-container {
+  width: 250px;
+  padding: 20px;
+}
+
+.left_panel-list {
+  padding: 30px;
+}
+
+.left_panel-list__document-title {
+  border-bottom: 1px solid black;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.left_panel-list__document-title--selected {
+  background-color: yellow;
+}
