@@ -1,0 +1,18 @@
+.document-item {
+  padding: 20px;
+  border-bottom: 1px solid #888888;
+}
+
+.document-item.selected {
+  color: #111111;
+  background-color: #CECECE;
+}
+
+.document-item.unsaved {
+  color: #e59662;
+  font-weight: bold;
+}
+
+.document-item:last-child {
+  border-bottom: none;
+}
