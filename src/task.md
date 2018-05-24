@@ -1,4 +1,4 @@
-Todays' task is to implement what is visually described in src/task-mockup.png file.
+Task today is to implement what is visually described in src/task-mockup.png file.
 
 It should be a single page application to list, add, search, edit and delete documents.
 
