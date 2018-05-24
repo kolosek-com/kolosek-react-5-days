@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import InputField from './components/InputField'
+import SubmitButton from './components/SubmitButton'
 
 class SignupForm extends Component {
   constructor(props) {
@@ -10,74 +12,62 @@ class SignupForm extends Component {
       password: '',
       agreeWithTerms: false,
     };
-
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.toogleAgreeWithTerms = this.toogleAgreeWithTerms.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleEmailChange(e) {
-    this.setState({ email: e.target.value })
+  handleInputChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleFirstNameChange(e) {
-    this.setState({ firstName: e.target.value })
+  toogleAgreeWithTerms = () => {
+    this.setState(function(prevState, props){
+      return { agreeWithTerms: !prevState.agreeWithTerms }
+    });
   }
 
-  handleLastNameChange(e) {
-    this.setState({ lastName: e.target.value })
-  }
-
-  handlePasswordChange(e) {
-    this.setState({ password: e.target.value })
-  }
-
-  toogleAgreeWithTerms() {
-    this.setState({ agreeWithTerms: !this.state.agreeWithTerms })
-  }
-
-  handleSubmit(e) {
+  handleSubmit = (event) => {
+    event.preventDefault();
     console.log(this.state)
-    e.preventDefault();
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>
-            Email:
-            <input type="email" value={this.state.email} onChange={this.handleEmailChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            First name:
-            <input type="text" value={this.state.firstName} onChange={this.handleFirstNameChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last name:
-            <input type="text" value={this.state.lastName} onChange={this.handleLastNameChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password:
-            <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-          </label>
-        </div>
-        <div>
-          <label>
-            Agree with terms:
-            <input type="checkbox" value={this.state.agreeWithTerms} onChange={this.toogleAgreeWithTerms} />
-          </label>
-        </div>
-        <input type="submit" value="Submit" />
+        <InputField 
+          type="email" 
+          name="email" 
+          label="Email:" 
+          input={this.state.email} 
+          onChange={this.handleInputChange} 
+        />
+        <InputField 
+          type="text" 
+          name="firstName" 
+          label="FirstName:" 
+          input={this.state.firstName} 
+          onChange={this.handleInputChange} 
+        />
+        <InputField 
+          type="text" 
+          name="lastName" 
+          label="LastName:" 
+          input={this.state.lastName} 
+          onChange={this.handleInputChange} 
+        />
+        <InputField 
+          type="password"
+          name="password" 
+          label="Password:" 
+          input={this.state.password} 
+          onChange={this.handleInputChange} 
+        />
+        <InputField 
+          type="checkbox" 
+          name="agreeWithTerms" 
+          label="Agree with terms:" 
+          input={this.state.agreeWithTerms} 
+          onChange={this.toogleAgreeWithTerms} 
+        />
+        <SubmitButton />
       </form>
     );
   }
