@@ -1,0 +1,71 @@
+.document-page__container {
+  background-color: #CECECE;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:  100px;
+  padding: 50px;
+}
+
+.document-page__box {
+  background-color: #FFFFFF;
+  border: 1px solid #888888;
+  height: 400px;
+}
+
+.document-page__header {
+  border-bottom: 1px solid #888888;
+}
+
+.document-page__header-text {
+  padding: 10px;
+  margin: 0;
+}
+
+.document-page__box__search-input {
+  border: 1px solid #888888;
+  border-radius: 20px;
+  height: 35px;
+  width: 70%;
+  margin: 20px;
+  padding-left: 35px;
+  background-image: url('search.png');
+  background-repeat: no-repeat;
+  background-position: 7px 7px;
+}
+
+.document-page__box__search-input:focus {
+  outline: none;
+}
+
+.document-page__box__column {
+  border-right: 1px solid #888888;
+}
+
+.document-page__document-title-input {
+  width: 100%;
+  border: 1px solid #888888;
+  border-left: none;
+  border-right: none;
+  padding-left: 10px;
+  height: 40px;
+}
+
+.document-page__document-title-input:focus {
+  outline: none;
+}
+
+.document-page__document-text-input {
+  width: 100%;
+  border: 1px solid #888888;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding-left: 10px;
+  padding-top: 10px;
+  height: 299px;
+}
+
+.document-page__document-text-input:focus {
+  outline: none;
+}

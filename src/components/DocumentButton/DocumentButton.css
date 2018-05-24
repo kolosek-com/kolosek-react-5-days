@@ -1,0 +1,32 @@
+.new-document {
+  background-image: url('add.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #888888;
+  position: relative;
+  top: 12px;
+}
+
+.save-document {
+  background-image: url('save.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #888888;
+  position: relative;
+  top: 12px;
+}
+
+.delete-document {
+  background-image: url('delete.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #888888;
+  position: relative;
+  top: 12px;
+}
