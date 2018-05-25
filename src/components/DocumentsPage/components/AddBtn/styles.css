@@ -1,0 +1,11 @@
+.add-btn {
+  margin: 0px 10px;
+  border: 2px solid gray;
+  border-radius: 5px;
+  background-color: #1E90FF;
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+}
