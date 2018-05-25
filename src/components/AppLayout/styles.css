@@ -1,0 +1,10 @@
+body {
+  margin: 0px;
+  height: 100%;
+}
+
+.app-layout {
+  padding: 10px;
+  background-color: #F0F0F0;
+  height: 100%;
+}
