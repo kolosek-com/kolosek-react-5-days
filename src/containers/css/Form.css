@@ -1,11 +1,11 @@
 .document_editor-form {
   padding: 20px;
+  width: 100%;
 }
 
 .editor_form-content {
   display: flex;
   flex-direction: column;
-  width: 950px;
 }
 
 .form-toolbar {

@@ -73,7 +73,7 @@ class Form extends Component {
       <div className="form-toolbar">
         <h2>Notes</h2>
         <div>
-          <button onClick={this.handleDelete}>Del</button>
+          <button disabled={this.props.mode === 'add'} onClick={this.handleDelete}>Del</button>
           <button onClick={this.handleSave}>Save</button>
         </div>
       </div>

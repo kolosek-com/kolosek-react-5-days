@@ -7,6 +7,7 @@ export const UPDATE_DOCUMENT = "UPDATE_DOCUMENT"
 export const CHANGE_TO_ADD_MODE = "CHANGE_TO_ADD_MODE"
 export const TITLE_INPUT_CHANGE = "TITLE_INPUT_CHANGE"
 export const TEXT_INPUT_CHANGE = "TEXT_INPUT_CHANGE"
+export const SEARCH_DOCUMENT = "SEARCH_DOCUMENT"
 
 const initialState = {
   list: [
@@ -20,6 +21,7 @@ const initialState = {
   mode: 'edit',
   titleInput: '',
   textInput: '',
+  searchText: '',
 }
 
 export const createDocument = (_document) => {
@@ -70,6 +72,13 @@ export const changeTextInput = (value) => {
   }
 }
 
+export const searchDocument = (searchText) => {
+  return {
+    type: SEARCH_DOCUMENT,
+    searchText
+  }
+}
+
 let newList
 
 export default createReducer(initialState, ({
@@ -80,6 +89,7 @@ export default createReducer(initialState, ({
       ...state,
       list: newList,
       selected: payload.document,
+      mode: 'edit',
     }
   },
   [SELECT_DOCUMENT]: (payload, state) => {
@@ -110,7 +120,9 @@ export default createReducer(initialState, ({
     return {
       ...state,
       list: newList,
-      selected: newList[0]
+      selected: newList[0],
+      titleInput: newList[0].title,
+      textInput: newList[0].text,
     }
   },
   [CHANGE_TO_ADD_MODE]: (payload, state) => {
@@ -131,6 +143,17 @@ export default createReducer(initialState, ({
     return {
       ...state,
       textInput: payload.value
+    }
+  },
+  [SEARCH_DOCUMENT]: (payload, state) => {
+    newList = state.list
+    if(payload.searchText.length > 1) {
+      newList = newList.find(doc => doc.title === payload.searchText)
+    }
+    return {
+      ...state,
+      list: newList || [],
+      searchText: payload.searchText,
     }
   },
 }))

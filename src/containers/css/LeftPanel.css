@@ -1,6 +1,7 @@
 .left_panel-container {
   width: 250px;
   padding: 20px;
+  border-right: 1px solid black;
 }
 
 .left_panel-list {
@@ -16,4 +17,12 @@
 
 .left_panel-list__document-title--selected {
   background-color: yellow;
+}
+
+.left_panel-top_content {
+  display: flex;
+}
+
+.document-search {
+  margin-right: 8px;
 }
