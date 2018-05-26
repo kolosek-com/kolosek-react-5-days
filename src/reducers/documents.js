@@ -7,7 +7,6 @@ export const UPDATE_DOCUMENT = "UPDATE_DOCUMENT"
 export const CHANGE_TO_ADD_MODE = "CHANGE_TO_ADD_MODE"
 export const TITLE_INPUT_CHANGE = "TITLE_INPUT_CHANGE"
 export const TEXT_INPUT_CHANGE = "TEXT_INPUT_CHANGE"
-export const SEARCH_DOCUMENT = "SEARCH_DOCUMENT"
 
 const initialState = {
   list: [],
