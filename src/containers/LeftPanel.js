@@ -2,19 +2,29 @@ import React, {Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Search from '../components/Search'
+import { debounce } from 'lodash'
+
+import Button from '../components/Button'
+import Input from '../components/Input'
+
 import { 
   selectDocument,
   changeToAddMode,
-  searchDocument,
 } from '../reducers/documents'
+
+import AddIcon from '../assets/images/plus.png'
 
 import './css/LeftPanel.css'
 
 class LeftPanel extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = { searchText: '' }
+  }
+
   handleSearch = (event) => {
-    this.props.searchDocument(event.target.value)
+    this.setState({ searchText: event.target.value })
   }
 
   render() {
@@ -28,10 +38,14 @@ class LeftPanel extends Component {
 
   renderList() {
     const { documents, selected } = this.props
+    let filteredDocuments = this.state.searchText.length < 2 ? documents :
+      filteredDocuments = documents.filter((doc) => {
+        return doc.title.includes(this.state.searchText)
+      })
     return(
       <div className="left_panel-list">
         {
-         documents.map(doc => {
+         filteredDocuments.map(doc => {
             return(
               <div 
                 key={doc.id} 
@@ -49,8 +63,19 @@ class LeftPanel extends Component {
   renderTopContent() {
     return(
       <div className="left_panel-top_content">
-        <Search className="document-search" onChange={this.handleSearch} val={this.props.searchText} />
-        <button onClick={this.props.changeToAddMode}>Add</button>
+       <Input
+          className="document-search" 
+          name="search" 
+          value={this.state.searchText} 
+          type="text"
+          placeholder="Search a document" 
+          onChange={this.handleSearch}
+        />
+        <Button
+          className="top_content__button" 
+          onClick={this.props.changeToAddMode}
+          imgSrc={AddIcon}
+        />
       </div>
     )
   }
@@ -65,7 +90,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   selectDocument,
   changeToAddMode,
-  searchDocument,
 }, dispatch)
 
 export default connect(

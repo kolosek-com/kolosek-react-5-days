@@ -1,11 +1,24 @@
 .document_editor-form {
   padding: 20px;
   width: 100%;
+  background-color: #FFF58C;
 }
 
 .editor_form-content {
   display: flex;
   flex-direction: column;
+}
+
+.editor_form-content__input {
+	padding: 5px;
+	border: 1px solid #515151;
+	margin-bottom: 10px;
+}
+
+.editor_form-content__info {
+	margin-top: 50px;
+	font-size: 20px;
+	text-align: center;
 }
 
 .form-toolbar {
@@ -14,4 +27,12 @@
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.form-toolbar__button {
+	border: 0;
+	background-color: #FFF58C;
+	margin-left: 30px;
+	outline: none;
+	cursor: pointer;
 }

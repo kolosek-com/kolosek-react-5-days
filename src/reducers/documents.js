@@ -10,18 +10,11 @@ export const TEXT_INPUT_CHANGE = "TEXT_INPUT_CHANGE"
 export const SEARCH_DOCUMENT = "SEARCH_DOCUMENT"
 
 const initialState = {
-  list: [
-    {
-      id: 0,
-      title: 'Title1',
-      text: 'Some random text'
-    }
-  ],
+  list: [],
   selected: {},
   mode: 'edit',
   titleInput: '',
   textInput: '',
-  searchText: '',
 }
 
 export const createDocument = (_document) => {
@@ -72,13 +65,6 @@ export const changeTextInput = (value) => {
   }
 }
 
-export const searchDocument = (searchText) => {
-  return {
-    type: SEARCH_DOCUMENT,
-    searchText
-  }
-}
-
 let newList
 
 export default createReducer(initialState, ({
@@ -120,9 +106,9 @@ export default createReducer(initialState, ({
     return {
       ...state,
       list: newList,
-      selected: newList[0],
-      titleInput: newList[0].title,
-      textInput: newList[0].text,
+      selected: newList[0] ? newList[0] : {},
+      titleInput: newList[0] ? newList[0].title : '',
+      textInput: newList[0] ? newList[0].text : '',
     }
   },
   [CHANGE_TO_ADD_MODE]: (payload, state) => {
@@ -143,17 +129,6 @@ export default createReducer(initialState, ({
     return {
       ...state,
       textInput: payload.value
-    }
-  },
-  [SEARCH_DOCUMENT]: (payload, state) => {
-    newList = state.list
-    if(payload.searchText.length > 1) {
-      newList = newList.find(doc => doc.title === payload.searchText)
-    }
-    return {
-      ...state,
-      list: newList || [],
-      searchText: payload.searchText,
     }
   },
 }))
