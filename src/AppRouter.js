@@ -3,8 +3,9 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import MovieListPage from './pages/MovieListPage/MovieListPage';
-import MoviePage from './pages/MoviePage/MoviePage';
+import BuildListPage from './pages/BuildListPage/BuildListPage';
+import BuildPage from './pages/BuildPage/BuildPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 class AppRouter extends Component {
   render() {
@@ -13,13 +14,18 @@ class AppRouter extends Component {
         <div>
           <Route
             exact
-            path={'/movie/:id'}
-            component={MoviePage}
+            path={'/login'}
+            component={LoginPage}
+          />
+          <Route
+            exact
+            path={'/build/:vcs_type/:username/:project/:build_num'}
+            component={BuildPage}
           />
           <Route
             exact
             path={'/'}
-            component={MovieListPage}
+            component={BuildListPage}
           />
         </div>
       </Router>
