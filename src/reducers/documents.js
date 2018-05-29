@@ -68,7 +68,7 @@ let newList
 
 export default createReducer(initialState, ({
   [CREATE_DOCUMENT]: (payload, state) => {
-    newList = state.list
+    newList = [...state.list]
     newList.push(payload.document)
     return {
       ...state,
@@ -100,14 +100,11 @@ export default createReducer(initialState, ({
     }
   },
   [REMOVE_DOCUMENT]: (payload, state) => {
-    newList = state.list
-    newList = newList.filter(doc => doc.id !== payload.documentId)
+    newList = state.list.filter(doc => doc.id !== payload.documentId)
     return {
       ...state,
       list: newList,
-      selected: newList[0] ? newList[0] : {},
-      titleInput: newList[0] ? newList[0].title : '',
-      textInput: newList[0] ? newList[0].text : '',
+      selected: {},
     }
   },
   [CHANGE_TO_ADD_MODE]: (payload, state) => {

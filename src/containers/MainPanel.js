@@ -23,14 +23,6 @@ import './css/Form.css'
 
 class MainPanel extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-      text: '',
-    };
-  }
-
   changeTitleInput = (event) => {
     this.props.changeTitleInput(event.target.value)
   }
@@ -43,7 +35,7 @@ class MainPanel extends Component {
     if (this.props.titleInput.length > 1) {
       if(this.props.mode === 'add') {
         this.props.createDocument({
-          id: this.props.documents.length,
+          id: new Date().getTime(),
           title: this.props.titleInput,
           text: this.props.textInput,
         });
@@ -67,7 +59,7 @@ class MainPanel extends Component {
       <div className="document_editor-form">
         { !isEmpty(selected) || mode === 'add'  ? 
           <div className="editor_form-content">
-            {this.rederToolbar()}
+            {this.renderToolbar()}
             <Input
               className="editor_form-content__input" 
               name="title" 
@@ -93,7 +85,7 @@ class MainPanel extends Component {
     );
   }
 
-  rederToolbar() {
+  renderToolbar() {
     return(
       <div className="form-toolbar">
         <h2>Notes</h2>

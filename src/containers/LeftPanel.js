@@ -36,9 +36,9 @@ class LeftPanel extends Component {
 
   renderList() {
     const { documents, selected } = this.props
-    let filteredDocuments = this.state.searchText.length < 2 ? documents :
-      filteredDocuments = documents.filter((doc) => {
-        return doc.title.includes(this.state.searchText)
+    let filteredDocuments = this.state.searchText.length === '' ? documents :
+      documents.filter((doc) => {
+        return doc.title.toLowerCase().includes(this.state.searchText.toLowerCase())
       })
     return(
       <div className="left_panel-list">
