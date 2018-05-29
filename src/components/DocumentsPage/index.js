@@ -18,58 +18,49 @@ class DocumentsPage extends Component {
 
   onDocumentEdit = (inputName, inputValue) => {
     this.setState((prevState) => {
-      prevState.document = prevState.document || {}
-      
-      return (prevState.document[inputName] = inputValue);
+      var document = {...prevState.document, [inputName]: inputValue, unsaved: true };
+      var unsaved = {...prevState.unsaved, [document.id]: {...document} };
+
+      return { document: document, unsaved: unsaved };
     });
   };
 
   saveDocument = ({ id, title, content}) => {
     var document_id = id ? parseInt(id) : this.next_id++;
-
     this.documents[document_id] = { title, content };
 
     this.setState((prevState) => {
-      prevState.documents[document_id] = { title, content };
-      delete prevState.unsaved[document_id];
+      var documents = {...prevState.documents};
+      var unsaved = {...prevState.unsaved};
 
-      return { documents: prevState.documents, unsaved: prevState.unsaved, document: { id: null, title: "", content: ""} };
+      documents[document_id] = { title, content };
+      delete unsaved[document_id];
+
+      return { documents: documents, unsaved: unsaved, document: { id: null, title: "", content: ""} };
     });
-    this.forceUpdate();
   };
 
   deleteDocument = () => {
     delete this.documents[this.state.document.id];
     this.setState((prevState) => {
-      delete prevState.unsaved[prevState.document.id];
-      delete prevState.documents[prevState.document.id];
+      var unsaved = {...prevState.unsaved};
+      var documents = {...prevState.documents};
 
-      return { documents: prevState.documents, unsaved: prevState.unsaved };
+      delete unsaved[prevState.document.id];
+      delete documents[prevState.document.id];
+
+      return { documents: documents, unsaved: unsaved };
     });
   };
 
   addDocumentMode = () => {
-    this.setState((prevState) => {
-      if (prevState.document) {
-        var id = prevState.document ? prevState.document.id : this.next_id++;
-        prevState.unsaved[id] = {...prevState.document, unsaved: true };
-      }
-      prevState.document = { id: null, title: "", content: ""};
-      
-      return { document: prevState.document, unsaved: prevState.unsaved};
-    })
+    this.setState({ document: { id: null, title: "", content: ""}});
   };
 
   editDocumentMode = (id) => {
     this.setState((prevState) => {
-      var active = prevState.document;
-      
-      if (active.id) {
-        prevState.unsaved[active.id] = { ...active, unsaved: true};
-      }
-      var next = prevState.unsaved[id] || this.documents[id]
-
-      return { document: { ...next, id: id }, unsaved: prevState.unsaved };
+      var next = prevState.unsaved[id] || this.documents[id];
+      return { document: { ...next, id: id } };
     });
   };
 
@@ -77,20 +68,20 @@ class DocumentsPage extends Component {
     var results = {};
 
     if (!query) {
-      results = this.documents;
+      results = { ...this.documents };
     } else {
       Object.keys(this.documents).map((dId) =>{
-        var saved = this.documents[dId].title === query || this.documents[dId].content === query;
-        var unsaved = this.state.unsaved[dId] && (this.state.unsaved[dId].title === query || this.state.unsaved[dId].content === query);
+        query = query.toLowerCase();
+        var saved = this.documents[dId].title.toLowerCase().includes(query) || 
+                    this.documents[dId].content.toLowerCase().includes(query);
 
-        if (saved || unsaved) {
+        if (saved) {
           results[dId] = this.documents[dId];
         };
       });
     };
 
     this.setState({ documents: results });
-    this.forceUpdate();
   };
 
   render () {

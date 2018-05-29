@@ -16,7 +16,7 @@ const DocumentsManager = ({ unsaved, documents, addDocument, editDocument, searc
       <div className="documents-list">
         { 
           Object.keys(documents).map((id) => {
-            var document = unsaved[id] || documents[id];
+            var document = { unsaved: (unsaved[id] || {} ).unsaved, ...documents[id] };
 
             return <Document key={"document-"+id} document={ { ...document, id: id} } openInEditor={editDocument}/>
           })

@@ -7,19 +7,20 @@ class SearchBar extends PureComponent {
 
   constructor(props) {
     super();
+    this.state = { query: "" };
   };
 
-  listenForEnter = (event) => {
-    if (event.key === 'Enter') {
-      this.props.onChange(event.target.value);
-    };
+  searchByQuery = (event) => {
+    this.setState({ query: event.target.value }, () => {
+      this.props.onChange(this.state.query);
+    })
   };
 
   render() {
     return (
-      <form className="search-bar" onSubmit={(e) => e.preventDefault() }>
-        <input type="search" name="query" placeholder="Search" onKeyPress={this.listenForEnter}/>
-      </form>
+      <div className="search-bar">
+        <input value={this.state.query} type="search" name="query" placeholder="Search" onChange={this.searchByQuery}/>
+      </div>
     );
   };
 };

@@ -11,7 +11,8 @@ class DocumentsEditor extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.document && nextProps.document.title !== this.state.title) {
+    if (nextProps.document && (nextProps.document.title !== this.state.title || 
+                               nextProps.document.content !== this.state.content)) {
       this.setState({ ...nextProps.document  });
     }
   }
