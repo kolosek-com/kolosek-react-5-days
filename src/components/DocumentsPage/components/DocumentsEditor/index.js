@@ -6,19 +6,7 @@ import './styles.css';
 class DocumentsEditor extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = { id: null, title: "", content: "" };
-  };
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.document && (nextProps.document.title !== this.state.title || 
-                               nextProps.document.content !== this.state.content)) {
-      this.setState({ ...nextProps.document  });
-    }
-  }
-
-  defaultState() {
-    this.setState({ id: null, title: "", content: "" })
+    super();
   };
 
   updateDocument = (event) => {
@@ -35,42 +23,36 @@ class DocumentsEditor extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
-    this.defaultState();
+    this.props.onSubmit(this.props.document);
   };
 
   render () {
+    // Ask Kristina why I should do this here :-)
+    var document = {...this.props.document}
 
     return (
       <div className="documents-editor">
         <form onSubmit={this.onSubmit}>
           <div className="editor-actions">
-            <button onClick={this.delete} disabled={!this.state.id}>Delete</button>
-            <input className="documents-editor-submit" type="submit" value='Edit Document' disabled={!this.state.id}/>
+            <button onClick={this.delete} disabled={!document.id}>Delete</button>
+            <input className="documents-editor-submit" type="submit" value='Edit Document' disabled={!document.id}/>
           </div>
           <input 
             className="documents-editor-title" 
             type="text" 
             name="title" 
-            value={this.state.title} 
+            value={document.title} 
             onChange={this.updateDocument} />
           <textarea 
             className="documents-editor-content" 
             name="content" 
-            value={this.state.content} 
+            value={document.content} 
             onChange={this.updateDocument} />
-          <input className="documents-editor-submit" type="submit" value='Add Document' disabled={this.state.id}/>
+          <input className="documents-editor-submit" type="submit" value='Add Document' disabled={this.props.id}/>
         </form>
       </div>
     );
   };
-};
-
-DocumentsEditor.propTypes = {
-  document: PropTypes.object,
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  deleteDocument: PropTypes.func.isRequired
 };
 
 export default DocumentsEditor;
