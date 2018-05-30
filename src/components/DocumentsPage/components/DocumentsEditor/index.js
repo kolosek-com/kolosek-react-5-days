@@ -30,11 +30,11 @@ class DocumentsEditor extends Component {
 
     return (
       <div className="documents-editor">
+        <div className="editor-actions">
+          <button onClick={this.delete} disabled={!document.id}>Delete</button>
+          <input className="documents-editor-submit" type="submit" value='Edit Document' disabled={!document.id}/>
+        </div>
         <form onSubmit={this.onSubmit}>
-          <div className="editor-actions">
-            <button onClick={this.delete} disabled={!document.id}>Delete</button>
-            <input className="documents-editor-submit" type="submit" value='Edit Document' disabled={!document.id}/>
-          </div>
           <input 
             className="documents-editor-title" 
             type="text" 

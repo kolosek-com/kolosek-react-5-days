@@ -5,16 +5,18 @@ import DocumentsManager from './components/DocumentsManager';
 // styles 
 import './styles.css';
 
+const emptyDocument= { id: null, title: "", content: ""};
+
 class DocumentsPage extends Component {
+
+  next_id = 0;
+  // 'database' documents
+  documents = {};
   
   constructor(props) {
     super();
     this.state = { documents: {}, document: null, unsaved: {} }
   };
-
-  next_id = 0;
-  // 'database' documents
-  documents = {};
 
   onDocumentEdit = (inputName, inputValue) => {
     this.setState((prevState) => {
@@ -26,38 +28,36 @@ class DocumentsPage extends Component {
   };
 
   saveDocument = ({ id, title, content}) => {
-    var document_id = id ? parseInt(id) : this.next_id++;
-
     if (title && content) {
-      this.documents[document_id] = { title, content };
-
       this.setState((prevState) => {
+        var document_id = id ? parseInt(id) : this.next_id++;
         var documents = {...prevState.documents};
         var unsaved = {...prevState.unsaved};
 
+        this.documents[document_id] = { title, content };
         documents[document_id] = { title, content };
         delete unsaved[document_id];
 
-        return { documents: documents, unsaved: unsaved, document: { id: null, title: "", content: ""} };
+        return { documents: documents, unsaved: unsaved, document: emptyDocument };
       });
     }
   };
 
-  deleteDocument = () => {
-    delete this.documents[this.state.document.id];
+  deleteDocument = () => {    
     this.setState((prevState) => {
       var unsaved = {...prevState.unsaved};
       var documents = {...prevState.documents};
 
+      delete this.documents[prevState.document.id];
       delete unsaved[prevState.document.id];
       delete documents[prevState.document.id];
 
-      return { documents: documents, unsaved: unsaved };
+      return { documents: documents, unsaved: unsaved, document: emptyDocument };
     });
   };
 
   addDocumentMode = () => {
-    this.setState({ document: { id: null, title: "", content: ""}});
+    this.setState({ document: emptyDocument });
   };
 
   editDocumentMode = (id) => {
@@ -88,11 +88,13 @@ class DocumentsPage extends Component {
   };
 
   render () {
+    const { documents, unsaved } = this.state;
+
     return (
       <div className="documents-page">
         <DocumentsManager 
-          documents={this.state.documents}
-          unsaved={this.state.unsaved}
+          documents={documents}
+          unsaved={unsaved}
           addDocument={this.addDocumentMode}
           editDocument={this.editDocumentMode}
           searchDocuments={this.searchDocuments} />
