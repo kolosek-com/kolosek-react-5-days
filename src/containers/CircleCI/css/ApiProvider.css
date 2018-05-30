@@ -1,0 +1,27 @@
+.api_provider-container {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.api_provider-form {
+  width: 500px;
+  margin-top: 20px;
+}
+
+.api_provider-form__input {
+  width: 350px;
+  height: 30px;
+  margin-right: 20px;
+  padding-left: 10px;
+}
+
+.api_provider-form__button {
+  width: 60px;
+  height: 38px;
+}

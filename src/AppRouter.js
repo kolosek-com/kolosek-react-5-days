@@ -3,8 +3,9 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import MovieListPage from './pages/MovieListPage/MovieListPage';
-import MoviePage from './pages/MoviePage/MoviePage';
+import List from './containers/CircleCI/List'
+import Details from './containers/CircleCI/Details'
+import ApiProvider from './containers/CircleCI/ApiProvider'
 
 class AppRouter extends Component {
   render() {
@@ -13,13 +14,18 @@ class AppRouter extends Component {
         <div>
           <Route
             exact
-            path={'/movie/:id'}
-            component={MoviePage}
+            path={'/build/:id'}
+            component={Details}
           />
           <Route
             exact
             path={'/'}
-            component={MovieListPage}
+            component={List}
+          />
+          <Route
+            exact
+            path={'/api_key'}
+            component={ApiProvider}
           />
         </div>
       </Router>

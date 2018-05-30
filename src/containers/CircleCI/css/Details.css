@@ -1,0 +1,33 @@
+.details-container {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  
+  font-size: 20px;
+  padding: 5px;
+  width: 500px;
+}
+
+.details_container__header {
+  text-align: center;
+}
+
+.details_container__info {
+  padding: 8px;
+}
+
+.details_container__build {
+  padding: 20px;
+  padding-left: 30px;
+  padding-bottom: 25px;
+}
+
+.details_container__commit {
+  padding: 8px;
+  padding-left: 30px;
+}
