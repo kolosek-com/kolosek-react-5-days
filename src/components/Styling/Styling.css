@@ -1,0 +1,14 @@
+.container-div-css {
+  margin: 10px;
+  width: 80px;
+  height: 30px;
+  background-color: blue;
+  border-width: 1px;
+  border-color: blue;
+  border-radius: 5px;
+}
+
+.container-p-css {
+  color: white;
+  text-align: center;
+}

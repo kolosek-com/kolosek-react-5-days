@@ -1,0 +1,13 @@
+.documents-manager {
+  max-width: 35%;
+  padding: 30px 15px;
+  border-right: 1px solid gray;
+}
+
+.manager-tools {
+  display: flex;
+}
+
+.documents-list {
+  margin: 20px 0px;
+}

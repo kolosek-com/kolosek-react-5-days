@@ -1,0 +1,33 @@
+.documents-editor {
+  padding: 20px 15px;
+  width: 65%;
+}
+
+.editor-actions {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.editor-actions button {
+  margin: 5px;
+}
+
+.documents-editor-title {
+  width: 90%;
+  height: 25px;
+  display: block;
+  margin: 10px;
+}
+
+.documents-editor-content {
+  width: 90%;
+  height: 50%;
+  display: block;
+  margin: 10px;
+  resize: none;
+}
+
+.documents-editor-submit {
+  margin: 5px 10px;
+}

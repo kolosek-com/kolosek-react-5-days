@@ -1,0 +1,12 @@
+.documents-page {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid gray;
+}
+
+.documents-editor-turn-on {
+  text-align: center;
+  width: 65%;
+  padding-top: 50px;
+}
