@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Redirect, Link } from 'react-router-dom';
-import TimeAgo from 'react-timeago';
+import { Redirect } from 'react-router-dom';
 import ProjectSelect from '../../components/ProjectSelect/ProjectSelect';
 import BranchSelect from '../../components/BranchSelect/BranchSelect';
+import CircleCiBuild from '../../components/CircleCiBuild/CircleCiBuild';
 
 import './BuildListPage.css';
 
@@ -74,45 +74,7 @@ class BuildListPage extends Component {
 
         {
           this.props.builds.map((build, index) => {
-            let statusClass = 'circleci-build-status';
-            if(build.status === 'fixed' || build.status === 'success' ) {
-              statusClass += ' success'
-            } else if (build.status === 'failed'){
-              statusClass += ' fail'
-            } else if (build.status === 'running'){
-              statusClass += ' running'
-            }
-            return (
-              <div className="row circleci-build" key={`${build.vcs_type}-${build.username}-${build.reponame}-${build.build_num}`}>
-                <div className="col-12">
-                  <Link
-                    onClick={this.selectBuild(build)}
-                    to={`/build/${build.vcs_type}/${build.username}/${build.reponame}/${build.build_num}`}
-                    className="circleci-build-link"
-                  >
-                    <div className="row">
-                      <div className="col-10 circleci-build-title">
-                        {build.branch}/{build.reponame} #{build.build_num}
-                      </div>
-                      <div className="col-2">
-                        <TimeAgo date={build.queued_at} />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-8 circleci-build-commit-msg">
-                        {build.subject}
-                      </div>
-                      <div className="col-2 circleci-build-status-label">
-                        Status:
-                      </div>
-                      <div className="col-2">
-                        <strong className={statusClass}>{build.status}</strong>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            );
+            return (<CircleCiBuild build={build} onClick={this.selectBuild(build)} />);
           })
         }
       </div>

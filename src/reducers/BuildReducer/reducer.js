@@ -17,6 +17,16 @@ function buildReducer(state = initialState, action) {
         buildList: action.data,
       });
     }
+    case action_types.GET_BUILD_START: {
+      return Object.assign({...state}, {
+        selectedBuild: null,
+      });
+    }
+    case action_types.GET_BUILD_SUCCESS: {
+      return Object.assign({...state}, {
+        selectedBuild: action.data,
+      });
+    }
     case action_types.SELECT_BUILD: {
       return Object.assign({...state}, {
         selectedBuild: action.data,

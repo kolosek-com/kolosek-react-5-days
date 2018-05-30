@@ -1,17 +1,39 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import './BuildPage.css';
 
+import {
+  getBuild,
+} from '../../reducers/BuildReducer/actions';
+
 class BuildPage extends Component {
+  componentDidMount() {
+    if (this.props.apiKey && !this.props.selectedBuild) {
+      const { vcs_type, username, project, build_num } = this.props.match.params;
+      this.props.getBuild(this.props.apiKey, vcs_type, username, project, build_num);
+    }
+  }
+
   render() {
-    const { selectedBuild } = this.props;
-    if (!selectedBuild) {
+    const { selectedBuild, apiKey } = this.props;
+    if (!apiKey) {
       return (
         <Redirect
-          to='/'
+          to='/login'
         />
+      )
+    } else if (!selectedBuild) {
+      return (
+        <div className="circleci-build-page">
+          <div className="row">
+            <div className="col-12 text-center">
+              <h1>Circle CI</h1>
+            </div>
+          </div>
+        </div>
       )
     }
     let statusClass = 'text-dark';
@@ -75,10 +97,17 @@ class BuildPage extends Component {
 
 function stateToProps(state) {
   return {
+    apiKey: state.apiKey.currentKey,
     selectedBuild: state.builds.selectedBuild,
   };
 }
 
-const BuildPage_Connected = connect(stateToProps, null)(BuildPage);
+function dispatchToProps(dispatch) {
+  return bindActionCreators({
+    getBuild,
+  }, dispatch);
+}
+
+const BuildPage_Connected = connect(stateToProps, dispatchToProps)(BuildPage);
 
 export default BuildPage_Connected;

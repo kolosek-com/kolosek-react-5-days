@@ -35,6 +35,31 @@ export const getBranchBuildList = (apiToken, project, branch) => {
   }
 }
 
+export const getBuild = (apiToken, vcs_type, username, project, build_num) => {
+  return (dispatch) => {
+    dispatch({
+      type: action_types.GET_BUILD_START
+    });
+    return axios.get(`https://circleci.com/api/v1.1/project/${vcs_type}/${username}/${project}/${build_num}?circle-token=${apiToken}`)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch({
+            type: action_types.GET_BUILD_SUCCESS,
+            data: response.data
+          });
+        } else {
+          throw response;
+        }
+      })
+      .catch((error) => {
+        dispatch({
+          type: action_types.GET_BUILD_ERROR,
+          error: error
+        });
+      })
+  }
+}
+
 export const getProjectBuildList = (apiToken, project) => {
 
   return (dispatch) => {

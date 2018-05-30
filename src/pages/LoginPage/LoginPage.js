@@ -25,6 +25,7 @@ class LoginPage extends Component {
 
   setKey = () => {
     this.props.setApiKey(this.state.apiKey);
+    console.log(this.state);
   }
 
   render() {
