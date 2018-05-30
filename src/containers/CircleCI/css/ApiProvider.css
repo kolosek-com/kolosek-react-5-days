@@ -23,5 +23,10 @@
 
 .api_provider-form__button {
   width: 60px;
-  height: 38px;
+  height: 36px;
+}
+
+.api_provider-form__error {
+  color: red;
+  margin-top: 12px;
 }

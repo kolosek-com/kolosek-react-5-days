@@ -3,7 +3,8 @@ import * as action_types from './constants';
 const initialState = {
   buildsList: [],
   selectedBuild: null,
-  dataFetched: false, 
+  dataFetched: false,
+  error: null,
 };
 
 function circleBuildReducer(state = initialState, action) {
@@ -17,6 +18,12 @@ function circleBuildReducer(state = initialState, action) {
       return Object.assign({...state}, {
         buildsList: action.payload,
         dataFetched: true,
+        error: null
+      });
+    }
+    case action_types.GET_BUILDS_ERROR: {
+      return Object.assign({...state}, {
+        error: action.error
       });
     }
     case action_types.SELECT_BUILD: {

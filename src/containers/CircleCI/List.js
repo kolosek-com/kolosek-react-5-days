@@ -31,7 +31,7 @@ class List extends Component {
   }
 
   render() {
-    if(this.state.redirect) return <Redirect to='/api_key' />
+    if(this.state.redirect || this.props.error) return <Redirect to='/api_key' />
     return (
       <div className="builds_container">
         { this.props.dataFetched ? 
@@ -83,6 +83,7 @@ function stateToProps(state) {
   return {
     list: state.builds.buildsList,
     dataFetched: state.builds.dataFetched,
+    error: state.builds.error,
   };
 }
 
