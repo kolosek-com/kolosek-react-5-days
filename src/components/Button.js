@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Button = ({className, isDisabled, imgSrc, onClick}) => (
+const Button = ({className, isDisabled, imgSrc, onClick, imgClass}) => (
   <button 
     className={className} 
     disabled={isDisabled} 
     onClick={onClick}
   >
-    <img src={imgSrc} width="30" height="30" />
+    <img src={imgSrc} className={imgClass} />
   </button>
 );
 

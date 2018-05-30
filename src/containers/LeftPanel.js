@@ -38,7 +38,8 @@ class LeftPanel extends Component {
     const { documents, selected } = this.props
     let filteredDocuments = this.state.searchText.length === '' ? documents :
       documents.filter((doc) => {
-        return doc.title.toLowerCase().includes(this.state.searchText.toLowerCase())
+        return doc.title.toLowerCase().includes(this.state.searchText.toLowerCase()) ||
+          doc.text.toLowerCase().includes(this.state.searchText.toLowerCase())
       })
     return(
       <div className="left_panel-list">
@@ -73,6 +74,7 @@ class LeftPanel extends Component {
           className="top_content__button" 
           onClick={this.props.changeToAddMode}
           imgSrc={AddIcon}
+          imgClass='button'
         />
       </div>
     )

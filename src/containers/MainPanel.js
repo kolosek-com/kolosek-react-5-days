@@ -95,11 +95,13 @@ class MainPanel extends Component {
             disabled={this.props.mode === 'add'} 
             onClick={this.handleDelete}
             imgSrc={DelIcon}
+            imgClass='button'
           />
           <Button
             className="form-toolbar__button" 
             onClick={this.handleSave}
             imgSrc={SaveIcon}
+            imgClass='button'
           />
         </div>
       </div>
