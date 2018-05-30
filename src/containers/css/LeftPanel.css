@@ -1,0 +1,45 @@
+.left_panel-container {
+  width: 250px;
+  padding: 20px;
+  border-right: 1px solid black;
+  background-color: #D2FFE4;
+}
+
+.left_panel-list {
+  padding: 20px;
+}
+
+.left_panel-list__document-title {
+  border-bottom: 1px solid black;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.left_panel-list__document-title--selected {
+  background-color: #33FFAF;
+}
+
+.left_panel-top_content {
+  display: flex;
+  align-items: center;
+}
+
+.top_content__button {
+  border: 0;
+  background-color: #D2FFE4;
+  outline: none;
+  cursor: pointer;
+}
+
+.document-search {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  padding-bottom: 3px;
+  margin-right: 8px;
+}
