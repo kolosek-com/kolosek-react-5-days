@@ -27,17 +27,20 @@ class DocumentsPage extends Component {
 
   saveDocument = ({ id, title, content}) => {
     var document_id = id ? parseInt(id) : this.next_id++;
-    this.documents[document_id] = { title, content };
 
-    this.setState((prevState) => {
-      var documents = {...prevState.documents};
-      var unsaved = {...prevState.unsaved};
+    if (title && content) {
+      this.documents[document_id] = { title, content };
 
-      documents[document_id] = { title, content };
-      delete unsaved[document_id];
+      this.setState((prevState) => {
+        var documents = {...prevState.documents};
+        var unsaved = {...prevState.unsaved};
 
-      return { documents: documents, unsaved: unsaved, document: { id: null, title: "", content: ""} };
-    });
+        documents[document_id] = { title, content };
+        delete unsaved[document_id];
+
+        return { documents: documents, unsaved: unsaved, document: { id: null, title: "", content: ""} };
+      });
+    }
   };
 
   deleteDocument = () => {

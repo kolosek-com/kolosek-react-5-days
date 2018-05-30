@@ -17,7 +17,6 @@ class DocumentsEditor extends Component {
   delete = () => {
     if(window.confirm('Delete warning')) {
       this.props.deleteDocument();
-      this.defaultState();
     };
   };
 
@@ -27,8 +26,7 @@ class DocumentsEditor extends Component {
   };
 
   render () {
-    // Ask Kristina why I should do this here :-)
-    var document = {...this.props.document}
+    var document = this.props.document
 
     return (
       <div className="documents-editor">
