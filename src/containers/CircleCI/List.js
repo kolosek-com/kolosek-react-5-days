@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
 
-import moment from 'moment'
-import uuidv1 from 'uuid'
+import SingleBuild from '../../components/SingleBuild'
 
 import {
   getBuildList,
@@ -22,8 +20,7 @@ class List extends Component {
 
   componentDidMount() {
     const apiKey = sessionStorage.getItem('CIRCLE_CI_API_KEY');
-    this.props.getBuildList(apiKey);
-    this.setState({redirect: !apiKey});
+    apiKey ? this.props.getBuildList(apiKey) : this.setState({redirect: true})
   }
 
   selectBuild = (build) => () => {
@@ -51,29 +48,14 @@ class List extends Component {
         <h2>Latest builds</h2>
         {
           this.props.list.map(build => {
-            return this.renderSingleBuild(build)
+            return (
+              <SingleBuild 
+                key={build.build_num} 
+                build={build} 
+                onClick={this.selectBuild(build)}
+              />)
           })
         }
-      </div>
-    )
-  }
-
-  renderSingleBuild(build) {
-    return (
-      <div key={uuidv1()} className="single-build">
-        <div className="single_build-top_content">
-          <Link
-            onClick={this.selectBuild(build)}
-            to={`/build/${build.build_num}`}
-          >
-            <div>{build.branch} / {build.reponame} # {build.build_num}</div>
-          </Link>
-          <div className="top-content__time">{moment(build.stop_time).fromNow()}</div>
-        </div>
-        <div className="single_build-bottom_content">
-          <div>{build.subject}</div>
-          <div>Status: {build.status}</div>
-        </div>
       </div>
     )
   }
@@ -97,4 +79,3 @@ function dispatchToProps(dispatch) {
 const List_Connected = connect(stateToProps, dispatchToProps)(List);
 
 export default List_Connected;
-

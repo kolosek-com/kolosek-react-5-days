@@ -11,8 +11,8 @@ class Details extends Component {
   componentDidMount() {
     if(!this.props.selectedBuild) {
       const apiKey = sessionStorage.getItem('CIRCLE_CI_API_KEY');
-      const buildNum = this.props.location.pathname.split('/')[2]
-      this.props.getBuild(buildNum, apiKey)
+      const params = this.props.match.params
+      this.props.getBuild(params.vcs_type, params.username, params.reponame, params.build_num, apiKey)
     }
   }
 

@@ -14,7 +14,7 @@ class AppRouter extends Component {
         <div>
           <Route
             exact
-            path={'/build/:id'}
+            path={'/build/:vcs_type/:username/:reponame/:build_num'}
             component={Details}
           />
           <Route

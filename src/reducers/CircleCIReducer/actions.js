@@ -35,18 +35,17 @@ export const getBuildList = (apiKey) => {
   }
 }
 
-export const getBuild = (buildNum, apiKey) => {
+export const getBuild = (vcrType, username, projectName, buildNum, apiKey) => {
   return (dispatch) => {
     dispatch({
       type: action_types.GET_BUILD_START
     });
-    return axios.get('https://circleci.com/api/v1.1/recent-builds?circle-token=' + apiKey)
+    return axios.get(`https://circleci.com/api/v1.1/project/${vcrType}/${username}/${projectName}/${buildNum}?circle-token=${apiKey}`)
       .then((response) => {
         if (response.status === 200) {
           dispatch({
             type: action_types.GET_BUILD_SUCCESS,
             payload: response.data,
-            buildNum: buildNum,
           });
         } else {
           throw response;
