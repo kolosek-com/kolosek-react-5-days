@@ -1,12 +1,7 @@
 .api_provider-container {
-  position: fixed;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+  margin: auto;
+  margin-top: 100px;
+  width: 400px;
 }
 
 .api_provider-form {

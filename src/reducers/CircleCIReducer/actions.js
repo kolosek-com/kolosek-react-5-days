@@ -18,7 +18,6 @@ export const getBuildList = (apiKey) => {
     return axios.get('https://circleci.com/api/v1.1/recent-builds?circle-token=' + apiKey)
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data)
           dispatch({
             type: action_types.GET_BUILDS_SUCCESS,
             payload: response.data
@@ -30,6 +29,32 @@ export const getBuildList = (apiKey) => {
       .catch((error) => {
         dispatch({
           type: action_types.GET_BUILDS_ERROR,
+          error: error
+        });
+      })
+  }
+}
+
+export const getBuild = (buildNum, apiKey) => {
+  return (dispatch) => {
+    dispatch({
+      type: action_types.GET_BUILD_START
+    });
+    return axios.get('https://circleci.com/api/v1.1/recent-builds?circle-token=' + apiKey)
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch({
+            type: action_types.GET_BUILD_SUCCESS,
+            payload: response.data,
+            buildNum: buildNum,
+          });
+        } else {
+          throw response;
+        }
+      })
+      .catch((error) => {
+        dispatch({
+          type: action_types.GET_BUILD_ERROR,
           error: error
         });
       })

@@ -2,9 +2,9 @@ import * as action_types from './constants';
 
 const initialState = {
   buildsList: [],
-  selectedBuild: null,
+  selectedBuild: undefined,
   dataFetched: false,
-  error: null,
+  error: undefined,
 };
 
 function circleBuildReducer(state = initialState, action) {
@@ -18,7 +18,7 @@ function circleBuildReducer(state = initialState, action) {
       return Object.assign({...state}, {
         buildsList: action.payload,
         dataFetched: true,
-        error: null
+        error: undefined
       });
     }
     case action_types.GET_BUILDS_ERROR: {
@@ -29,6 +29,11 @@ function circleBuildReducer(state = initialState, action) {
     case action_types.SELECT_BUILD: {
       return Object.assign({...state}, {
         selectedBuild: action.payload,
+      });
+    }
+    case action_types.GET_BUILD_SUCCESS: {
+      return Object.assign({...state}, {
+        selectedBuild: action.payload.find(build => build.build_num === parseInt(action.buildNum, 10))
       });
     }
     default: {

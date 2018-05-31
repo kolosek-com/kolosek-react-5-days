@@ -11,6 +11,11 @@ class ApiProvider extends Component {
     redirect: false, 
   }
 
+  componentDidMount() {
+    const apiKey = sessionStorage.getItem('CIRCLE_CI_API_KEY');
+    this.setState({redirect: apiKey});
+  }
+
   handleSave = () => {
     sessionStorage.setItem('CIRCLE_CI_API_KEY', this.state.input)
     this.setState({ redirect: true })
@@ -21,7 +26,6 @@ class ApiProvider extends Component {
   }
 
   render() {
-    console.log(this.props.error)
     if(this.state.redirect) return <Redirect to='/' />
     return (
       <div className="api_provider-container">
