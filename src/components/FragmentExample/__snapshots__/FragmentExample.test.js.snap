@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FragmentExample with default context renders 1`] = `
+Array [
+  <p>
+    Some text.
+</p>,
+  <h2>
+    A heading
+</h2>,
+  <p>
+    More text.
+</p>,
+  <h2>
+    Another heading
+</h2>,
+  <p>
+    Even more text.
+</p>,
+]
+`;
+
+exports[`FragmentExample wont render if context value not fragment 1`] = `null`;

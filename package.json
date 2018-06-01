@@ -10,7 +10,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --modulePaths=src",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.4.0"
   }
 }

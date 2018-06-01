@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortalExample with set context renders 1`] = `
+<div
+  className="app"
+>
+  This div has overflow: hidden.
+  <button
+    onClick={[Function]}
+  >
+    Show modal
+  </button>
+</div>
+`;
+
+exports[`PortalExample wont render with default context (other than portal) 1`] = `null`;
