@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-
-import movieReducer from './MovieReducer/reducer';
+import authReducer from './AuthenticationReducer/reducer';
+import circleCiReducer from './CircleCiReducer/reducer';
 
 export default combineReducers({
-  movies: movieReducer,
+  auth: authReducer,
+  circleCi: circleCiReducer
 });

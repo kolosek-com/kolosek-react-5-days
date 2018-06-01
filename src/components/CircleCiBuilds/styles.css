@@ -1,0 +1,20 @@
+.circle-ci-builds-page {
+  padding: 20px 30px;
+  margin: 20px;
+  font-size: 25px;
+  color: #404040;
+  border: 2px solid #404040;
+  height: 100%;
+}
+
+.circle-ci-builds-page h2{
+  text-align: center;
+}
+
+.latest-builds {
+  margin: 10px 0px;
+}
+
+a {
+  text-decoration: none;
+}

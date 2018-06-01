@@ -1,0 +1,47 @@
+.commit {
+  padding: 10px 2px;
+  border-bottom: 1px solid gray;
+  font-size: 17px;
+}
+
+.commit .msg, .commit .time {
+  color: #808080;
+}
+
+.branch-details {
+  padding-bottom: 5px;
+  color: black;
+}
+
+.commit .status {
+  color: #606060;
+}
+
+.commit .status-running {
+  color: blue;
+}
+
+.commit .status-queued {
+  color: orange;
+}
+
+.commit .status-passed {
+  color: green;
+}
+
+.commit .status-failed {
+  color: red;
+}
+
+.commit .status-canceled {
+  color: black;
+}
+
+.commit .status-holder {
+  width: 100px;
+}
+
+.flex-holder-space-between {
+  display: flex;
+  justify-content: space-between;
+}
