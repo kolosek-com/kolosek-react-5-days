@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details with default context renders 1`] = `
+<div
+  className="details-container"
+>
+  <div>
+    Loading data...
+  </div>
+</div>
+`;

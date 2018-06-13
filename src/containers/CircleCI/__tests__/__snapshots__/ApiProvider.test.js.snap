@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiProvider with default context renders 1`] = `
+<div
+  className="api_provider-container"
+>
+  <form
+    className="api_provider-form"
+  >
+    <input
+      className="api_provider-form__input"
+      onChange={[Function]}
+      placeholder="Please add CircleCI API key"
+    />
+    <button
+      className="api_provider-form__button"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+    <div
+      className="api_provider-form__error"
+    >
+      
+    </div>
+  </form>
+</div>
+`;
