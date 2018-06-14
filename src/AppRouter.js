@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import List from './containers/CircleCI/List'
+import ListContainer from './containers/CircleCI/ListContainer'
 import Details from './containers/CircleCI/Details'
 import ApiProvider from './containers/CircleCI/ApiProvider'
 
@@ -20,7 +20,7 @@ class AppRouter extends Component {
           <Route
             exact
             path={'/'}
-            component={List}
+            component={ListContainer}
           />
           <Route
             exact

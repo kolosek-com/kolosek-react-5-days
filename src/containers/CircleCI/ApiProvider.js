@@ -31,7 +31,7 @@ class ApiProvider extends Component {
       <div className="api_provider-container">
         <form className="api_provider-form">
           <input className="api_provider-form__input" onChange={this.handleOnChange} placeholder='Please add CircleCI API key' />
-          <button className="api_provider-form__button" onClick={this.handleSave}>Save</button>
+          <button type="submit" className="api_provider-form__button" onClick={this.handleSave}>Save</button>
           <div className="api_provider-form__error">{this.props.error ? 'Authorization failed: Token is not valid!' : ''}</div>
         </form>
       </div>
