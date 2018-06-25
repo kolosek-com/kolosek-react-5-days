@@ -31,7 +31,7 @@ class CircleCiBuilds extends Component {
           { 
             this.props.latestBuilds.map((build, i) => 
               <Link 
-                key={"commit-" + i} 
+                key={i + '-' + build.id + '-' + build.branchName + '-' + build.projectName + '-'} 
                 onClick={this.selectBuild(build, i)}
                 to={`/build/${build.id}`}
               >

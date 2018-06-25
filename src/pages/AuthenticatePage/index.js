@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from '../../reducers/AuthenticationReducer/actions';
@@ -18,17 +18,13 @@ class AuthenticatePage extends Component {
 
   authenticate = (e) => {
     e.preventDefault();
-    this.props.login(this.state.key).then(() => {
-      if (!this.props.error) {
-        this.props.history.push("/");
-      };
-    });
+    this.props.login(this.state.key);
   };
 
   render() {
     return (
-      // sessionStorage.getItem('circleCiToken') ? 
-      //   <Redirect to='/' /> : 
+      this.props.activeSession ? 
+        <Redirect to='/' /> : 
         <div className='auth-page'>
           <form onSubmit={this.authenticate}>
             <input name='circle-ci-api-key' 
@@ -47,7 +43,8 @@ class AuthenticatePage extends Component {
 
 const stateToProps = (state) => {
   return {
-    error: state.auth.error
+    error: state.auth.error,
+    activeSession: state.auth.activeSession
   };
 }
 

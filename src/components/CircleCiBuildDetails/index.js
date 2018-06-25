@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import './styles.css';
 
@@ -24,7 +25,7 @@ class CircleCiBuildDetails extends Component {
           Branch name: {branchName}
         </div>
         <div className='details-data'>
-          Status: <label className={'status-' + status}>{status.charAt(0).toUpperCase() + status.slice(1)}</label>
+          Status: <label className={'status-' + status}>{_.capitalize(status)}</label>
         </div>
         <div className='details-data'>
           Commit message:

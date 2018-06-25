@@ -15,7 +15,7 @@ export const login = (circleCiToken) => {
       })
       .catch((error) => {
         var msg;
-        if (error.response.status === "401")  msg = "Invalid API key";
+        if (error.response && error.response.status === "401")  msg = "Invalid API key";
 
         dispatch({
           type: actionTypes.LOGIN_ERROR,

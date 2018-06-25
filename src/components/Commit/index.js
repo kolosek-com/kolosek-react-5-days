@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+
 import './styles.css';
 
 class Commit extends Component {
@@ -18,7 +20,7 @@ class Commit extends Component {
           <div className='msg'>{ commitMsg }</div>
           <div className='flex-holder-space-between status-holder'>
              <label className='status'>Status: </label>
-             <label className={'status-' + status}>{status.charAt(0).toUpperCase() + status.slice(1)}</label> 
+             <label className={'status-' + status}>{_.capitalize(status)}</label> 
           </div>
         </div>
       </div>

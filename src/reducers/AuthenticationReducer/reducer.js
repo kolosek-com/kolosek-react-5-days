@@ -1,13 +1,14 @@
 import { LOGIN_SUCCESS, LOGIN_ERROR } from './constants';  
 
 const initialState = {
-  error: null
+  error: null,
+  activeSession: false
 };
 
 const circleCiBuildsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS: {
-      return Object.assign({...state}, { error: null });
+      return Object.assign({...state}, { error: null, activeSession: true });
       break;
     }
     case LOGIN_ERROR: {
