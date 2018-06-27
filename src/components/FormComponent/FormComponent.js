@@ -16,20 +16,20 @@ class FormComponent extends Component {
 
 	handleInput = (e) => {
 		const target = e.target;
-	    const value = target.type === 'checkbox' ? target.checked : target.value;
-	    const name = target.name;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
 
-	    this.setState({
-	    	[name]: value
-	    });
+		this.setState({
+			[name]: value
+		});
 	}
 
 	handleSubmit = (e)  => {
 		e.preventDefault();
-		console.log("Name is: " + this.state.firstName);
-		console.log("Last Name is: " + this.state.lastName);
-		console.log("Password is: " + this.state.password);
-		console.log("Checkbox is: " + this.state.checkbox);
+		console.log('Name is: ' + this.state.firstName);
+		console.log('Last Name is: ' + this.state.lastName);
+		console.log('Password is: ' + this.state.password);
+		console.log('Checkbox is: ' + this.state.checkbox);
 	}
 
 	render () {
@@ -37,38 +37,39 @@ class FormComponent extends Component {
 			<div className="form-style">
 				<form onSubmit={this.handleSubmit}>
 					<InputFieldComponent 
-							name="firstName"
-							value={ this.state.firstName } 
-							type="text"
-							label="First name"
-							handleChange={ this.handleInput } />
+						name="firstName"
+						value={ this.state.firstName } 
+						type="text"
+						label="First name"
+						handleChange={ this.handleInput } />
 					<InputFieldComponent 
-							name="lastName"
-							value={this.state.lastName} 
-							type="text"
-							label="Last name"
-							handleChange={ this.handleInput } />
+						name="lastName"
+						value={this.state.lastName} 
+						type="text"
+						label="Last name"
+						handleChange={ this.handleInput } />
 					<InputFieldComponent 
-							name="password"
-							value={ this.state.password }
-							type="password"
-							label="Password"
-							handleChange={ this.handleInput } />
+						name="password"
+						value={ this.state.password }
+						type="password"
+						label="Password"
+						handleChange={ this.handleInput } />
 					<InputFieldComponent 
-							name="email"
-							value={ this.state.email } 
-							type="email"
-							label="Email"
-							handleChange={ this.handleInput} />
+						name="email"
+						value={ this.state.email } 
+						type="email"
+						label="Email"
+						handleChange={ this.handleInput } />
 					<label> Agreement</label>
 					<input
-			            name="checkbox"
-			            type="checkbox"
-			            checked={ this.state.checkbox }
-			            onChange={ this.handleInput } />
+						name="checkbox"
+						type="checkbox"
+		        checked={ this.state.checkbox }
+		        onChange={ this.handleInput }
+						className="form-input-style" />
 					<input type="submit" value="Submit" />
-				</form>
-			</div>	
+			</form>
+		</div>	
 		);
 	}
 }

@@ -1,16 +1,12 @@
 .form-style {
-    font: 95% Arial, Helvetica, sans-serif;
+    font: 14px Arial, Helvetica, sans-serif;
     max-width: 400px;
     margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
 }
 
-.form-style input[type="text"],
-.form-style input[type="email"],
-.form-style input[type="password"],
-.form-style input[type="checkbox"]
-{
+.form-input-style {
     -webkit-transition: all 0.30s ease-in-out;
     -moz-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
@@ -21,29 +17,26 @@
     -moz-box-sizing: border-box;
     width: 100%;
     background: #fff;
-    margin-bottom: 4%;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    padding: 3%;
+    padding: 15px;
     color: #555;
     font: 95% Arial, Helvetica, sans-serif;
 }
-.form-style input[type="text"]:focus,
-.form-style input[type="email"]:focus,
-.form-style input[type="password"]:focus,
-.form-style input[type="checkbox"]:focus
-{
+
+.form-style input[type="checkbox"]:focus {
     box-shadow: 0 0 5px #43D1AF;
-    padding: 3%;
+    padding: 5px;
     border: 1px solid #43D1AF;
 }
 
 .form-style input[type="submit"],
-.form-style input[type="button"]{
+.form-style input[type="button"] {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     width: 100%;
-    padding: 3%;
+    padding: 15px;
     background: #43D1AF;
     border-bottom: 2px solid #30C29E;
     border-top-style: none;
