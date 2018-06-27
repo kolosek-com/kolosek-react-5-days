@@ -19,13 +19,9 @@ class FormComponent extends Component {
 	    const value = target.type === 'checkbox' ? target.checked : target.value;
 	    const name = target.name;
 
-	    console.log("Name: " + name);
-
 	    this.setState({
 	    	[name]: value
 	    });
-
-
 	}
 
 	handleSubmit = (e)  => {
@@ -39,7 +35,7 @@ class FormComponent extends Component {
 	render () {
 		return (
 			<div className="form-style">
-				<form onSubmit={this.handleSubmit} className="blue">
+				<form onSubmit={this.handleSubmit}>
 					<InputFieldComponent 
 							name="firstName"
 							value={ this.state.firstName } 
@@ -75,7 +71,6 @@ class FormComponent extends Component {
 			</div>	
 		);
 	}
-
 }
 
 export default FormComponent;
