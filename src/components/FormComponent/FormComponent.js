@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import InputFieldComponent from '../InputFieldComponent/InputFieldComponent'
+import InputFieldComponent from '../InputFieldComponent/InputFieldComponent';
+import "./FormComponent.css";
 
 class FormComponent extends Component {
 	constructor() {
@@ -37,8 +38,8 @@ class FormComponent extends Component {
 
 	render () {
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
+			<div className="form-style">
+				<form onSubmit={this.handleSubmit} className="blue">
 					<InputFieldComponent 
 							name="firstName"
 							value={ this.state.firstName } 
