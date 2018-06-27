@@ -1,0 +1,28 @@
+.builds_container {
+  margin: auto;
+  margin-top: 100px;
+  width: 400px;
+  font-size: 20px;
+}
+
+.builds_container__header {
+  text-align: center;
+}
+
+.single_build-top_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.single_build-bottom_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.top-content__time {
+  font-size: 16px;
+}

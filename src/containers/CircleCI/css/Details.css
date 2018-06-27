@@ -1,0 +1,25 @@
+.details-container {
+  margin: auto;
+  margin-top: 100px;
+  width: 400px;
+  font-size: 20px;
+}
+
+.details_container__header {
+  text-align: center;
+}
+
+.details_container__info {
+  padding: 8px;
+}
+
+.details_container__build {
+  padding: 20px;
+  padding-left: 30px;
+  padding-bottom: 25px;
+}
+
+.details_container__commit {
+  padding: 8px;
+  padding-left: 30px;
+}
