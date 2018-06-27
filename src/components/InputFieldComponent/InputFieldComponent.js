@@ -8,7 +8,7 @@ function InputFieldComponent (props) {
 				value={ props.value }
 				name={ props.name }
 				onChange={ props.handleChange }
-				className="form-input-style"/>
+				className="form-input"/>
 		</div>
 	);
 }

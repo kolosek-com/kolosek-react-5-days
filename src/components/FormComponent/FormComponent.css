@@ -6,7 +6,7 @@
   background: #F7F7F7;
 }
 
-.form-input-style {
+.form-input {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -24,7 +24,7 @@
   font: 14px Arial, Helvetica, sans-serif;
 }
 
-.form-checkbox-style {
+.form-checkbox {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -39,13 +39,13 @@
   width: 200px;
 }
 
-.form-input-style:focus {
+.form-input:focus {
   box-shadow: 0 0 5px #43D1AF;
   padding: 5px;
   border: 1px solid #43D1AF;
 }
 
-.form-submit-style {
+.form-submit{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -59,6 +59,6 @@
   color: #fff;
 }
 
-.form-submit-style:hover {
+.form-submit:hover {
   background: #2EBC99;
 }

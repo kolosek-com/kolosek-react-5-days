@@ -66,8 +66,8 @@ class FormComponent extends Component {
 						type="checkbox"
 		        checked={ this.state.checkbox }
 		        onChange={ this.handleInput }
-						className="form-checkbox-style" />
-					<input type="submit" value="Submit" class="form-submit-style" />
+						className="form-checkbox" />
+					<input type="submit" value="Submit" class="form-submit" />
 			</form>
 		</div>	
 		);
