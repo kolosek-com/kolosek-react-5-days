@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ParentComponent from './components/ParentComponent/ParentComponent';
+import FormComponent from './components/FormComponent/FormComponent';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ParentComponent />
+       <FormComponent />
       </div>
     );
   }
