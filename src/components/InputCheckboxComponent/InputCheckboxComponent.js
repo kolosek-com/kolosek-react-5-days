@@ -1,7 +1,7 @@
 import React from 'react';
-import './InputFieldComponent.css'
+import './InputCheckboxComponent.css';
 
-function InputFieldComponent (props) {
+function InputCheckboxComponent (props) {
 	return (
 		<div>
 			<label>{ props.label }</label>
@@ -9,10 +9,10 @@ function InputFieldComponent (props) {
 				type={ props.type }
 				value={ props.value }
 				name={ props.name }
+				checked={ props.checked }
 				onChange={ props.handleChange }
-				className={ props.className} />
+				className={ props.className } />
 		</div>
 	);
 }
-
-export default InputFieldComponent;
+	export default InputCheckboxComponent;
