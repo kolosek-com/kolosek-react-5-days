@@ -10,7 +10,7 @@ function InputFieldComponent (props) {
 				value={ props.value }
 				name={ props.name }
 				onChange={ props.handleChange }
-				className={ props.className} />
+				className={ props.className } />
 		</div>
 	);
 }
