@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import Commit from '../Commit';
 import './styles.css';
 
@@ -14,11 +15,13 @@ class CircleCiBuilds extends Component {
 
   componentDidMount() {
     this.props.getCircleCiLatestBuilds();
-  }
+  };
 
-  selectBuild = (build, buildNo) => (e) => {
-    this.props.selectBuild({...build,  buildNo: buildNo});
-  }
+  componentWillReceiveProps(props) {
+    if (props.activeBuildNo) {
+      props.selectBuild(parseInt(props.activeBuildNo));
+    };
+  };
 
   render() {
     return(
@@ -29,15 +32,18 @@ class CircleCiBuilds extends Component {
         </div>
         <div className='latest-builds'>
           { 
-            this.props.latestBuilds.map((build, i) => 
-              <Link 
-                key={i + '-' + build.id + '-' + build.branchName + '-' + build.projectName + '-'} 
-                onClick={this.selectBuild(build, i)}
-                to={`/build/${build.id}`}
-              >
-                <Commit build={build} buildNo={i} />
-              </Link>
-            )
+            Object.keys(this.props.latestBuilds).map((buildNo) => {
+              var build = this.props.latestBuilds[buildNo];
+
+              return (
+                <Link 
+                  key={`${buildNo}-${build.id}-${build.branchName}-${build.projectName}`} 
+                  to={`/build/${buildNo}`}
+                >
+                  <Commit build={build} buildNo={buildNo} />
+                </Link>
+              )
+            })
           }
         </div>
       </div>
