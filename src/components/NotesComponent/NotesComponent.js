@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListComponent from '../ListComponent/ListComponent';
 import SearchComponent from '../SearchComponent/SearchComponent';
+import NewNoteComponent from '../NewNoteComponent/NewNoteComponent';
 
 const notes = [
   {
@@ -22,7 +23,10 @@ const notes = [
 
 class NotesComponent extends Component {
   state = {
-    query: ''
+    query: '',
+    form: false,
+    title:'',
+    note:''
   }
 
   handleInputChange = (e) => {
@@ -50,16 +54,23 @@ class NotesComponent extends Component {
     });
   }
 
+  showForm = () => {
+    this.setState({form: true});
+  }
+
   render() {
     return (
       <div>
         <SearchComponent
           placeholder="Search for..."
-          
           handleChange={this.handleInputChange}
         />
+      <button onClick={this.showForm}>+</button>
       {
         this.renderNotes()
+      }
+      {
+        this.state.form && <NewNoteComponent/>
       }
       </div>
     );
