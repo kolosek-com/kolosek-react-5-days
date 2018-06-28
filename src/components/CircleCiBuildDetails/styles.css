@@ -1,0 +1,47 @@
+.circle-ci-build-details {
+  padding: 20px 30px;
+  margin: 20px;
+  font-size: 25px;
+  color: #404040;
+  border: 2px solid #404040;
+  height: 100%;
+}
+
+.circle-ci-build-details h2{
+  text-align: center;
+}
+
+.details-data {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.details-data .status-running {
+  color: blue;
+}
+
+.details-data .status-queued {
+  color: orange;
+}
+
+.details-data .status-passed {
+  color: green;
+}
+
+.details-data .status-failed {
+  color: red;
+}
+
+.details-data .status-canceled {
+  color: black;
+}
+
+.details-data .status-holder {
+  width: 100px;
+}
+
+.details-data .commitMsg {
+  color: #808080;
+  text-align: center;
+  padding: 30px 20px;
+}

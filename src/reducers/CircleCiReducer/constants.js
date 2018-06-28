@@ -1,0 +1,5 @@
+export const GET_CI_BUILDS_START   = 'GET_CI_BUILDS_START';
+export const GET_CI_BUILDS_SUCCESS = 'GET_CI_BUILDS_SUCCESS';
+export const GET_CI_BUILDS_ERROR   = 'GET_CI_BUILDS_ERROR';
+
+export const SELECT_CI_BUILD       =  'SELECT_CI_BUILD';

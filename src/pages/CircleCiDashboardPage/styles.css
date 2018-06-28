@@ -1,0 +1,8 @@
+.circle-ci-dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.circle-ci-dashboard .dashboard-child {
+  width: 50%;
+}
