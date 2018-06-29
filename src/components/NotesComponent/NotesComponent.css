@@ -1,0 +1,64 @@
+.notes-search-container {
+  height: 100px;
+  padding-top: 60px;
+}
+
+#root {
+  font-family: 'Roboto Regular', sans-serif;
+}
+
+.notes-buttons-container {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: flex-end;
+}
+
+.notes-action-button {
+  height: 30px;
+  margin-left: 5px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 17px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.notes-action-button:disabled{
+  background-color: gray;
+}
+
+.notes-add-button {
+  color: #06a53e;
+  border: 2px solid #06a53e;
+}
+
+.notes-edit-button {
+  color: #e5aa06;
+  border: 2px solid #e5aa06;
+}
+
+.notes-delete-button {
+  color: #a00303;
+  border: 2px solid #a00303;
+}
+
+.notes-list-container {
+  width: 180px;
+  height: 500px;
+}
+
+.notes-component-container {
+  display: flex;
+}
+
+.title {
+  margin-left: 250px;
+  color: #4CAF50;
+}
+
+.note-desc {
+  margin-left: 200px;
+  margin-top: 200px;
+}
