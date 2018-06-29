@@ -21,9 +21,9 @@
 }
 
 .title-field:focus {
-   box-shadow: 0 0 5px #43D1AF;
-   padding: 5px;
-   border: 1px solid #43D1AF;
+  box-shadow: 0 0 5px #43D1AF;
+  padding: 5px;
+  border: 1px solid #43D1AF;
 }
 
 .body-field {
@@ -40,7 +40,7 @@
 }
 
 .body-field:focus {
-   box-shadow: 0 0 5px #43D1AF;
-   padding: 5px;
-   border: 1px solid #43D1AF;
+  box-shadow: 0 0 5px #43D1AF;
+  padding: 5px;
+  border: 1px solid #43D1AF;
 }

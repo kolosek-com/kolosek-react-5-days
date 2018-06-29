@@ -43,17 +43,16 @@ class NotesComponent extends Component {
     const value = target.value;
     const name = target.name;
     if ( this.state[name] !== value) {
-      this.setState({changed: true });
+      this.setState({changed: true});
     } else {
-      this.setState({changed: false });
+      this.setState({changed: false});
     }
     this.setState({
       [name]: value
     });
   }
 
-  saveNote = (e) => {
-    e.preventDefault();
+  saveNote = () => {
     if (this.state.edit) {
       const note = this.state.notes.filter(n => n.id === this.state.selected.id)
       const index = this.state.notes.indexOf(note[0]);
@@ -112,26 +111,26 @@ class NotesComponent extends Component {
 
   toggleForm = () => {
     this.setState((prevState, currentProps) => {
-     return {
-       form: !prevState.form,
-       edit: false,
-       selected: null
-     }
-   });
+      return {
+        form: !prevState.form,
+        edit: false,
+        selected: null
+      }
+    });
+  }
+
+  selectNote = (e, item) => {
+    this.setState((prevState, currentProps)=> {
+      return {
+        selected: item,
+        edit: !prevState.edit
+      }
+    });
   }
 
   isFiltered = (item) => {
     return item.title.toLowerCase().includes(this.state.query) ||
-    item.body.toLowerCase().includes(this.state.query);
-  }
-
-  selectNote = (e, item) => {
-      this.setState((prevState, currentProps)=> {
-        return {
-          selected: item,
-          edit: !prevState.edit
-        }
-      });
+          item.body.toLowerCase().includes(this.state.query);
   }
 
   renderNotes = () => {
@@ -144,7 +143,8 @@ class NotesComponent extends Component {
             clicked={(e) => this.selectNote(e, item)}
             selected={(this.state.edit && this.state.selected === item) ? true : false}
           />
-      )} else {
+        );
+      } else {
         return false;
       }
     });
@@ -152,45 +152,44 @@ class NotesComponent extends Component {
 
   render() {
     return (
-      <div className="notes-component-container">
+      <div className='notes-component-container'>
         <div>
-          <div className="notes-search-container">
+          <div className='notes-search-container'>
             <SearchComponent
-              placeholder="Search for..."
+              placeholder='Search for...'
               handleChange={this.handleInputChange}
             />
           </div>
-          <div className="notes-buttons-container">
+          <div className='notes-buttons-container'>
             { !this.state.edit &&
               (<button
                 onClick={this.toggleForm}
-                className="notes-action-button notes-add-button"
-                >
-                {this.state.form ? '-' : '+'}
+                className='notes-action-button notes-add-button'>
+                  {this.state.form ? '-' : '+'}
               </button>)
             }
               <button
-                  disabled={!this.state.changed}
-                  onClick={this.saveNote}
-                  className="notes-action-button notes-edit-button">
-                  {this.state.changed ? "Save *" : "Save"}
+                disabled={!this.state.changed}
+                onClick={this.saveNote}
+                className='notes-action-button notes-edit-button'>
+                  {this.state.changed ? 'Save *' : 'Save'}
               </button>
 
             <button
-                disabled={!this.state.selected}
-                onClick={this.handleDelete}
-                className="notes-action-button notes-delete-button">
+              disabled={!this.state.selected}
+              onClick={this.handleDelete}
+              className='notes-action-button notes-delete-button'>
                 Delete
             </button>
           </div>
-          <div className="notes-list-container">
+          <div className='notes-list-container'>
             {
               this.renderNotes()
             }
           </div>
         </div>
         <div>
-          <h2 className="title">Notes</h2>
+          <h2 className='title'>Notes</h2>
         {
           this.state.form &&
             (<NewNoteComponent
@@ -212,7 +211,7 @@ class NotesComponent extends Component {
         {
           (!this.state.edit && !this.state.form) &&
             (
-              <div className="note-desc">
+              <div className='note-desc'>
                 <h5>Please select a document to edit or add a new one.</h5>
               </div>
             )

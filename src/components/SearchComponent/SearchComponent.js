@@ -1,15 +1,17 @@
 import React from 'react';
+import InputFieldComponent from '../InputFieldComponent/InputFieldComponent';
 
 import './SearchComponent.css';
 
 function SearchComponent (props) {
   return(
     <div>
-      <input
-       className="notes-search"
-       type="text"
-       placeholder={props.placeholder}
-       onChange={props.handleChange}
+      <InputFieldComponent
+        className='notes-search'
+        type='text'
+        name='search'
+        placeholder={props.placeholder}
+        change={props.handleChange}
       />
     </div>
   );
