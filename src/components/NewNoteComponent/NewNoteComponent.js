@@ -2,8 +2,8 @@ import React from 'react';
 
 function NewNoteComponent(props) {
   return(
-    <div >
-      <form onSubmit={props.submit} className="new-note-container" id="newForm">
+    <div>
+      <div className="new-note-container">
         <input
           type="text"
           name="title"
@@ -12,17 +12,14 @@ function NewNoteComponent(props) {
           className="title-field"
           onChange={props.change}
         />
-      <textarea form="newForm"
+      <textarea
           name="body"
           value={props.body}
           placeholder="Enter the note"
           className="body-field"
           onChange={props.change}
         />
-      <input type="submit"
-             value={props.changed ? "Submit*" : "Submit"}
-             className="note-submit"/>
-      </form>
+    </div>
     </div>
   );
 }

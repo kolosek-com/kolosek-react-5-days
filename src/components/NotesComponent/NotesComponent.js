@@ -52,46 +52,45 @@ class NotesComponent extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  saveNote = (e) => {
     e.preventDefault();
-    const randomId = Math.random().toString(36).substring(7);
-    const note = {
-        title: this.state.title,
-        body: this.state.body,
-        id: randomId
-    };
+    if (this.state.edit) {
+      const note = this.state.notes.filter(n => n.id === this.state.selected.id)
+      const index = this.state.notes.indexOf(note[0]);
+      const newNote = {
+          title: this.state.title || this.state.selected.title,
+          body: this.state.body || this.state.selected.body,
+          id: note[0].id
+      };
+      let editedNotes = this.state.notes;
+      editedNotes[index] = newNote;
 
-    this.setState({
-      notes: [...this.state.notes, note],
-      selected: null,
-      form: false,
-      body: '',
-      title: '',
-      changed: false
-    });
-  }
+      this.setState({
+        notes: editedNotes,
+        selected: null,
+        title: '',
+        body: '',
+        form: false,
+        changed: false
+      });
+    } else {
+      const randomId = Math.random().toString(36).substring(7);
+      const note = {
+          title: this.state.title,
+          body: this.state.body,
+          id: randomId
+      };
 
-  handleEdit = (e) => {
-    e.preventDefault();
-    const note = this.state.notes.filter(n => n.id === this.state.selected.id)
-    const index = this.state.notes.indexOf(note[0]);
-    const newNote = {
-        title: this.state.title || this.state.selected.title,
-        body: this.state.body || this.state.selected.body,
-        id: note[0].id
-    };
-    let editedNotes = this.state.notes;
-    editedNotes[index] = newNote;
-
-    this.setState({
-      notes: editedNotes,
-      selected: null,
-      title: '',
-      body: '',
-      edit: false,
-      form: false,
-      changed: false
-    });
+      this.setState({
+        notes: [...this.state.notes, note],
+        selected: null,
+        form: false,
+        body: '',
+        title: '',
+        changed: false,
+        edit: false
+      });
+    }
   }
 
   handleInputChange = (e) => {
@@ -115,16 +114,10 @@ class NotesComponent extends Component {
     this.setState((prevState, currentProps) => {
      return {
        form: !prevState.form,
+       edit: false,
+       selected: null
      }
    });
-  }
-
-  toggleEdit = (e) => {
-    this.setState((prevState, currentProps) => {
-     return {
-       edit: !prevState.edit
-      }
-    });
   }
 
   isFiltered = (item) => {
@@ -133,7 +126,12 @@ class NotesComponent extends Component {
   }
 
   selectNote = (e, item) => {
-    this.setState({ selected: item });
+      this.setState((prevState, currentProps)=> {
+        return {
+          selected: item,
+          edit: !prevState.edit
+        }
+      });
   }
 
   renderNotes = () => {
@@ -144,6 +142,7 @@ class NotesComponent extends Component {
             key={item.id}
             item={item}
             clicked={(e) => this.selectNote(e, item)}
+            selected={(this.state.edit && this.state.selected === item) ? true : false}
           />
       )} else {
         return false;
@@ -170,14 +169,13 @@ class NotesComponent extends Component {
                 {this.state.form ? '-' : '+'}
               </button>)
             }
-            { !this.state.form &&
-              (<button
-                  disabled={!this.state.selected}
-                  onClick={this.toggleEdit}
+              <button
+                  disabled={!this.state.changed}
+                  onClick={this.saveNote}
                   className="notes-action-button notes-edit-button">
-                  Edit
-              </button>)
-            }
+                  {this.state.changed ? "Save *" : "Save"}
+              </button>
+
             <button
                 disabled={!this.state.selected}
                 onClick={this.handleDelete}
@@ -192,12 +190,12 @@ class NotesComponent extends Component {
           </div>
         </div>
         <div>
+          <h2 className="title">Notes</h2>
         {
           this.state.form &&
             (<NewNoteComponent
               title={this.state.title}
               body={this.state.body}
-              submit={this.handleSubmit}
               change={this.handleInput}
               changed={this.state.changed}
             />)
@@ -209,14 +207,13 @@ class NotesComponent extends Component {
                 body={this.state.body || this.state.selected.body}
                 change={this.handleInput}
                 changed={this.state.changed}
-                submit={this.handleEdit}
               />)
         }
         {
-          (!this.state.selected && !this.state.form) &&
+          (!this.state.edit && !this.state.form) &&
             (
-              <div>
-                <h5>Please Select a document to edit or add a new one.</h5>
+              <div className="note-desc">
+                <h5>Please select a document to edit or add a new one.</h5>
               </div>
             )
         }
