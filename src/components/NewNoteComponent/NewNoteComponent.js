@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './NewNoteComponent.css';
+
 function NewNoteComponent(props) {
   return(
     <div>
@@ -19,7 +21,7 @@ function NewNoteComponent(props) {
           className="body-field"
           onChange={props.change}
         />
-    </div>
+      </div>
     </div>
   );
 }

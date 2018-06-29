@@ -1,0 +1,16 @@
+.note-document {
+  text-align: center;
+  width: 250px;
+  height: 100px;
+  box-shadow: 0px 2px 5px 0px #888888;
+  background-color: white;
+  cursor: pointer;
+}
+
+.note-document:hover {
+  background-color: lightgray;
+}
+
+.note-document-active {
+  background-color: #F1684E;
+}
