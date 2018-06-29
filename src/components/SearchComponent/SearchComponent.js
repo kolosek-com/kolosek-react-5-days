@@ -5,6 +5,7 @@ function SearchComponent (props) {
     <div>
     <form>
       <input
+       className="notes-search"
        type="text"
        placeholder={props.placeholder}
        onChange={props.handleChange}

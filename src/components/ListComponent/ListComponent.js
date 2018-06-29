@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ListComponent.css';
 
-function ListComponent({ item }){
+function ListComponent({ item, clicked }){
   return (
-    <div>
+    <div onClick={clicked}>
         <h3>{ item.title }</h3>
         <p key={`document_${item.id}`}>
           { item.body }

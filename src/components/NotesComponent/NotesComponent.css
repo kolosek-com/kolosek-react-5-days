@@ -1,0 +1,121 @@
+.notes-search-container {
+  height: 100px;
+  padding-top: 60px;
+}
+
+#root {
+  font-family: 'Roboto Regular', sans-serif;
+}
+
+.notes-search {
+  height: 30px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.notes-buttons-container {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  justify-content: flex-end;
+}
+
+.notes-action-button {
+  height: 30px;
+  margin-left: 5px;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 17px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.notes-add-button {
+  color: #06a53e;
+  border: 2px solid #06a53e;
+}
+
+.notes-edit-button {
+  color: #e5aa06;
+  border: 2px solid #e5aa06;
+}
+
+.notes-delete-button {
+  color: #a00303;
+  border: 2px solid #a00303;
+}
+
+.notes-list-container {
+  width: 180px;
+  height: 500px;
+}
+
+.notes-component-container {
+  display: flex;
+}
+
+.new-note-container {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+  margin-left: 150px;
+  margin-top: 160px;
+}
+
+.title-field {
+  margin-bottom: 10px;
+  width: 600px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px 0px #888888;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-transition: all 0.30s ease-in-out;
+ -moz-transition: all 0.30s ease-in-out;
+ -ms-transition: all 0.30s ease-in-out;
+ -o-transition: all 0.30s ease-in-out;
+}
+
+.title-field:focus {
+   box-shadow: 0 0 5px #43D1AF;
+   padding: 5px;
+   border: 1px solid #43D1AF;
+}
+
+.body-field {
+  width: 600px;
+  height: 300px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px 0px #888888;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}
+
+.body-field:focus {
+   box-shadow: 0 0 5px #43D1AF;
+   padding: 5px;
+   border: 1px solid #43D1AF;
+}
+.note-submit {
+  margin-top: 10px;
+  width: 200px;
+  height: 32px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.note-submit:hover {
+  background-color: lightblue;
+}
