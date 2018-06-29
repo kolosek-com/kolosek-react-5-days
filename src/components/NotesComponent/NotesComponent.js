@@ -4,6 +4,11 @@ import SearchComponent from '../SearchComponent/SearchComponent';
 import NewNoteComponent from '../NewNoteComponent/NewNoteComponent';
 
 import './NotesComponent.css';
+import add from '../../images/add.svg';
+import hide from '../../images/hide.svg';
+import del from '../../images/rubbish-bin.svg';
+import save from '../../images/save.svg';
+import saveChanged from '../../images/save-changed.svg';
 
 const notesSeed = [
   {
@@ -42,6 +47,7 @@ class NotesComponent extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
+    
     if ( this.state[name] !== value) {
       this.setState({changed: true});
     } else {
@@ -165,21 +171,26 @@ class NotesComponent extends Component {
               (<button
                 onClick={this.toggleForm}
                 className='notes-action-button notes-add-button'>
-                  {this.state.form ? '-' : '+'}
+                  {this.state.form ?
+                    <img src={hide} width="27" height="27" alt="minus" /> :
+                    <img src={add} width="27" height="27" alt="plus" />}
               </button>)
             }
               <button
                 disabled={!this.state.changed}
                 onClick={this.saveNote}
                 className='notes-action-button notes-edit-button'>
-                  {this.state.changed ? 'Save *' : 'Save'}
+                  {this.state.changed ?
+                    <img src={saveChanged} width="27" height="27" alt="changed" /> :
+                    <img src={save} width="27" height="27" alt="save" />
+                  }
               </button>
 
             <button
               disabled={!this.state.selected}
               onClick={this.handleDelete}
               className='notes-action-button notes-delete-button'>
-                Delete
+                  <img src={del} width="27" height="27" alt="delete" />
             </button>
           </div>
           <div className='notes-list-container'>
