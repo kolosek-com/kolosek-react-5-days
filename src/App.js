@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import LoopRendering from './components/LoopRendering/LoopRendering';
+import DocumentApp from './containers/DocumentApp/DocumentApp'
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <LoopRendering />
+        <DocumentApp />
       </div>
     );
   }

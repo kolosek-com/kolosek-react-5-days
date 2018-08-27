@@ -1,0 +1,47 @@
+.container {
+  padding:20px;
+}
+
+.sidebar {
+  width: 18%;
+  float: left;
+  border: 1px solid #aaa;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 76%;
+  float: right;
+  border: 1px solid #aaa;
+  padding: 20px;
+}
+
+.add-button {
+  background-color: #9c99e0;
+}
+
+.document-item {
+  border-bottom:1px solid #aaa;;
+}
+
+.document-actions {
+  float: right;
+}
+
+.document-actions button{
+  margin-right: 10px;
+}
+
+.document-form-box {
+  padding: 20px;
+}
+
+.document-form input {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.document-form input[type='text'] {
+  width: 50%;
+}
