@@ -5,8 +5,9 @@ const DocumentHeader = (props) => (
     Documents
 
     <div className="document-actions">
-      <button>Delete</button>
-      <button>Edit</button>
+      <button
+        onClick={props.handleDelete}
+        disabled={!props.buttonsEnabled}>Delete</button>
     </div>
   </div>
 )

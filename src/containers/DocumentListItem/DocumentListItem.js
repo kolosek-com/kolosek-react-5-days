@@ -1,9 +1,9 @@
 import React from 'react'
 
-const DocumentListItem = ({ title }) => {
+const DocumentListItem = ({ id, title, onClickHandler }) => {
   return (
     <div className="document-item">
-      <h5>{title}</h5>
+      <div onClick={() => onClickHandler(id)} className="document-list-item">{title}</div>
     </div>
   )
 }

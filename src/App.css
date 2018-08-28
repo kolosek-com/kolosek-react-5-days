@@ -45,3 +45,9 @@
 .document-form input[type='text'] {
   width: 50%;
 }
+
+.document-list-item {
+  padding: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
