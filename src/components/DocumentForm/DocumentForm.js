@@ -1,59 +1,50 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-class DocumentForm extends PureComponent {
+class DocumentForm extends Component{
   constructor(props) {
-    super(props);
-
-    this.state = {
-      title: this.props.selectedDocument.title,
-      content: this.props.selectedDocument.content
-    }
-
-    this.onInputChange = this.onInputChange.bind(this)
-    this.submitHandler = this.submitHandler.bind(this)
+    super();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.selectedDocument.title !== prevProps.selectedDocument.title || this.props.selectedDocument.content !== prevProps.selectedDocument.content) {
-      this.setState({
-        title: this.props.selectedDocument.title,
-        content: this.props.selectedDocument.content
-      })
-    }
+  handleChange = (e) => {
+    this.props.onInputChange(e.target.name, e.target.value)
   }
 
-  onInputChange (e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  submitHandler (e) {
+  handleSubmit = (e) => {
     e.preventDefault()
-
-    this.props.handleSubmit(this.state)
+    this.props.submitHandler(this.props.document)
   }
 
   render() {
-    return <div className="document-form-box">
-      <form className="document-form" onSubmit={this.submitHandler}>
-        <input 
-          type="text" 
-          name="title" 
-          value={this.state.title} 
-          onChange={this.onInputChange} />
-        
-        <input 
-          type="text" 
-          name="content" 
-          value={this.state.content}
-          onChange={this.onInputChange} />
+    let { document } = this.props
 
-        <input 
-          type="Submit"/>
-      </form>
-    </div>
+    return (
+      <div className="document-form-box">
+        <form className="document-form" onSubmit={this.handleSubmit}>
+          <input 
+            type="text" 
+            name="title" 
+            value={document.title} 
+            onChange={this.handleChange} />
+          
+          <input 
+            type="text" 
+            name="content" 
+            value={document.content}
+            onChange={this.handleChange} />
+
+          <input 
+            type="Submit"/>
+        </form>
+      </div>
+    )
   }
+}
+
+DocumentForm.propTypes = {
+  document: PropTypes.object.isRequired,
+  submitHandler: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired
 }
 
 export default DocumentForm

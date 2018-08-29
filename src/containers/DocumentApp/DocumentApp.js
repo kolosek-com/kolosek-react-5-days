@@ -3,12 +3,7 @@ import DocumentSidebar from '../DocumentSidebar/DocumentSidebar'
 import DocumentHeader from '../../components/DocumentHeader/DocumentHeader'
 import DocumentForm from '../../components/DocumentForm/DocumentForm'
 
-const documents = [
-  { id: "23232323", title: "One", content: "test" },
-  { id: "43343434", title: "Two", content: "test" },
-  { id: "5454322", title: "Three", content: "test" },
-  { id: "8787878", title: "Four", content: "test" }
-]
+var documents = []
 
 class DocumentApp extends Component {
   constructor() {
@@ -27,7 +22,6 @@ class DocumentApp extends Component {
     }
 
     this.handleOpenForm = this.handleOpenForm.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
   }
 
@@ -45,7 +39,7 @@ class DocumentApp extends Component {
     })
   }
 
-  handleSubmit (data) {
+  handleSubmit = (data) => {
     if(this.state.selectedDocument.id === undefined) {
       this.saveDocument(data)  
     } else {
@@ -80,8 +74,10 @@ class DocumentApp extends Component {
       content: data.content
     }
 
+    documents = [...this.state.documents, newDocument]
+
     this.setState({
-      documents: [...this.state.documents, newDocument],
+      documents: documents,
       selectedDocument: {
         title: "",
         content: ""
@@ -95,7 +91,7 @@ class DocumentApp extends Component {
     e.preventDefault()
 
     if(window.confirm('Are you shure?')) {
-      var documents = this.state.documents.filter(document => document.id !== this.state.selectedDocument.id)
+      documents = this.state.documents.filter(document => document.id !== this.state.selectedDocument.id)
 
       this.setState({
         documents: documents,
@@ -109,22 +105,49 @@ class DocumentApp extends Component {
     }
   }
 
+  handleInputChange = (name, value) => {
+    var document = {
+      ...this.state.selectedDocument,
+      [name]: value
+    }
+
+    this.setState({
+      selectedDocument: document
+    })
+  }
+
+  filterDocuments = (term) => {
+    console.log('Term: ', term)
+    let filtered = []
+
+    if (term === "") {
+      filtered = documents
+    } else {
+      filtered = this.state.documents.filter(document => document.title.indexOf(term) > -1 || document.content.indexOf(term) > -1)
+    }
+
+    this.setState({
+      documents: filtered
+    })
+  }
+
   render () {
     console.log(this.state)
     let form = (<h4>Please select document or add new</h4>)
     if(this.state.formIsOpen) {
-      form = <DocumentForm 
-              selectedDocument={this.state.selectedDocument} 
+      form = <DocumentForm
+              document={this.state.selectedDocument} 
               onInputChange={this.handleInputChange} 
-              handleSubmit={this.handleSubmit}/>
+              submitHandler={this.handleSubmit} />
     }
-
-    var documents = this.state.documents
-    console.log(documents)
 
     return (
       <div className="container">
-        <DocumentSidebar documents={documents} onClickHandler={this.handleDocumentClick} handleOpenForm={this.handleOpenForm} />
+        <DocumentSidebar 
+          documents={this.state.documents} 
+          onClickHandler={this.handleDocumentClick} 
+          handleOpenForm={this.handleOpenForm} 
+          changeFilter={this.filterDocuments} />
 
         <div className="main">
           <DocumentHeader 
