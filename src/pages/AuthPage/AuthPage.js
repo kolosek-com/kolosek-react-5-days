@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { saveToken } from '../../reducers/AuthReducer/actions'
+import { 
+  saveToken,
+  loginUser 
+} from '../../reducers/AuthReducer/actions'
 import { Redirect } from 'react-router-dom';
 
 class AuthPage extends Component {
@@ -22,7 +25,7 @@ class AuthPage extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    this.props.saveToken(this.state.token)
+    this.props.loginUser(this.state.token)
 
     this.setState({
       token: ''
@@ -62,7 +65,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    saveToken
+    saveToken,
+    loginUser
   }, dispatch);
 }
 
