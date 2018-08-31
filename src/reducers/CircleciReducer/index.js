@@ -10,14 +10,12 @@ const initialState = new InitialState();
 
 const circleciReducer = (state = initialState, action) => {
   switch (action.type) {
-    case action_types.GET_CIRCLECI_BUILDS_START:
+    case `${action_types.GET_CIRCLECI_BUILDS}_START`:
       return state.set('buildList', [])
-    case action_types.GET_CIRCLECI_BUILDS_SUCCESS:
+    case `${action_types.GET_CIRCLECI_BUILDS}_SUCCESS`:
       return state.set('buildList', action.data)
     case action_types.SELECT_CIRCLECI_BUILD:
       return state.set('selectedBuild', action.data)
-    case action_types.GET_CIRCLECI_BUILDS_ERROR:
-      return state
     default:
       return state
   }

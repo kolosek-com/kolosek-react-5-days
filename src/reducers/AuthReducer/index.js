@@ -1,11 +1,9 @@
 import * as action_types from './constants';
 import { Record } from 'immutable';
 
-var token = localStorage.getItem('circleci_token_api')
-
 const InitialState = Record({
   token: null,
-  isAuthenticated: (token !== null),
+  isAuthenticated: (localStorage.getItem('circleci_token_api') !== null),
 });
 
 const initialState = new InitialState();
