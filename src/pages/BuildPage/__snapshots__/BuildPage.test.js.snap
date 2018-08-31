@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildPage with selectedBuild 1`] = `
+<div>
+  <h1>
+    CircleCI
+  </h1>
+  <h3>
+    Build no #
+    1
+  </h3>
+  <p>
+    Project name: 
+    Test
+  </p>
+  <p>
+    Branch name: 
+    test
+  </p>
+  <p>
+    Status: 
+    Success
+  </p>
+  <p>
+    Commit message: 
+  </p>
+</div>
+`;

@@ -8,7 +8,7 @@ import {
 } from '../../reducers/CircleciReducer/actions';
 import AuthPage from '../AuthPage/AuthPage'
 
-class BuildListPage extends Component {
+export class BuildListPage extends Component {
   componentDidMount() {
     if (this.props.isAuthenticated) {
       this.props.getCircleciBuilds();
@@ -58,11 +58,7 @@ class BuildListPage extends Component {
   }
 
   handleUnauthenticated = () => {
-    return (
-      <Redirect
-        to='/auth'
-      />
-    )
+    this.props.history.push('/auth')
   }
 
   isAuthenticated = () => {

@@ -7,7 +7,7 @@ import {
 } from '../../reducers/AuthReducer/actions'
 import { Redirect } from 'react-router-dom';
 
-class AuthPage extends Component {
+export class AuthPage extends Component {
   constructor(props) {
     super()
 

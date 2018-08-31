@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
-class BuildPage extends Component {
+export class BuildPage extends Component {
   render() {
     const { selectedBuild } = this.props
 
     if (!selectedBuild) {
-      return (
-        <Redirect
-          to='/'
-        />
-      )
+      this.props.history.push('/')
     }
 
     return (
@@ -32,4 +28,4 @@ const mapStateToProps = state => ({
   selectedBuild: state.builds.selectedBuild
 })
 
-export default connect(mapStateToProps)(BuildPage)
+export default withRouter(connect(mapStateToProps)(BuildPage))

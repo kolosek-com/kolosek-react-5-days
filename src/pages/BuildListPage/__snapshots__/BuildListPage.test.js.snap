@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BuildListPage with selectedBuild 1`] = `
+<div>
+  <h1>
+    CircleCI
+  </h1>
+  <h2>
+    Latest Builds
+  </h2>
+  <div>
+    <a
+      href="/build/29dc0e38446d5e4a7030caa7e61424b4aee7e175"
+      onClick={[Function]}
+    >
+      <h3>
+        development
+         / 
+         #
+        3
+         
+        2018-08-29T09:38:01.019Z
+         time ago
+      </h3>
+      <p>
+        Status: 
+        failed
+      </p>
+    </a>
+  </div>
+</div>
+`;

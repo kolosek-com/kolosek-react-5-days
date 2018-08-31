@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthPage 1`] = `
+<div>
+  <h1>
+    CircleCI
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      name="token"
+      onChange={[Function]}
+      placeholder="Enter API token..."
+    />
+    <input
+      placeholder="Submit"
+      type="submit"
+      value="Save token"
+    />
+  </form>
+</div>
+`;
