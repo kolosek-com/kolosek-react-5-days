@@ -7,16 +7,13 @@ import {
   selectBuild
 } from '../../reducers/CircleciReducer/actions';
 import AuthPage from '../AuthPage/AuthPage'
+import BuildListComponent from '../../components/BuildListComponent/BuildListComponent'
 
 export class BuildListPage extends Component {
   componentDidMount() {
     if (this.props.isAuthenticated) {
       this.props.getCircleciBuilds();
     }
-  }
-
-  selectBuild = (build) => () => {
-    this.props.selectBuild(build)
   }
 
   createBuildObject = (id, build_num, branch, reponame, added_at, status) => {
@@ -30,39 +27,34 @@ export class BuildListPage extends Component {
     }
   }
 
-  renderBuilds = () => {
-    return (      
-      this.props.builds.map((build, index) => {
-        var branchesObj = build.branches 
+  handleBuilds = () => {    
+    const buildsArr = []
 
-        return Object.keys(branchesObj).map(key => {
-          return branchesObj[key].recent_builds.map(recent => {
-            var buildObj = this.createBuildObject(recent.vcs_revision, recent.build_num, key, build.reponame, recent.added_at, recent.status)
+    this.props.builds.map((build, index) => {
+      var branchesObj = build.branches 
 
-            return (
-              <div>
-                <Link
-                  key={buildObj.id}
-                  onClick={this.selectBuild(buildObj)}
-                  to={`/build/${buildObj.id}`}
-                >
-                  <h3>{buildObj.branch} / {buildObj.reponame} #{buildObj.build_num} {buildObj.added_at} time ago</h3>
-                  <p>Status: {buildObj.status}</p>
-                </Link>
-              </div>
-            )
-          })
+      return Object.keys(branchesObj).map(key => {
+        return branchesObj[key].recent_builds.map(recent => {
+          var buildObj = this.createBuildObject(recent.vcs_revision, recent.build_num, key, build.reponame, recent.added_at, recent.status)
+
+          buildsArr.push(buildObj)
         })
       })
-    )
+    })
+    
+    return buildsArr
   }
 
   handleUnauthenticated = () => {
-    this.props.history.push('/auth')
+    return <Redirect to="/auth" />
   }
 
   isAuthenticated = () => {
     return this.props.isAuthenticated
+  }
+
+  handleBuildClick = (build) => {
+    this.props.selectBuild(build)
   }
 
   render() {
@@ -74,10 +66,7 @@ export class BuildListPage extends Component {
       <div>
         <h1>CircleCI</h1>
         <h2>Latest Builds</h2>
-        
-        {
-          this.renderBuilds()
-        }
+        <BuildListComponent builds={this.handleBuilds()} onClickHandler={this.handleBuildClick} />
       </div>
     );
   }
